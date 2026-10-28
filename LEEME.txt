@@ -1,0 +1,37 @@
+NAVISAF · TELEMETRÍA EN VIVO
+============================
+Proyecto independiente. NO modifica la app de alerta de curvas (repositorio navisaf-vivo).
+
+QUÉ HACE
+  - Posición en el mapa: SOLO el GPS del celular/tablet (cada segundo). Sin geocercas.
+  - Datos de motor del vehículo elegido, leídos de MyGeotab en tiempo real.
+  - Cada conductor elige qué datos ver, en qué orden y con qué límites (botón de ajustes).
+
+PUBLICAR (repositorio nuevo, por ejemplo "navisaf-telemetria")
+  1. En GitHub: + > New repository > nombre: navisaf-telemetria > Public > Create repository.
+  2. "uploading an existing file": arrastra TODO el contenido de esta carpeta
+     (index.html, manifest.webmanifest, sw.js, LEEME.txt y la carpeta icons). Commit changes.
+  3. Settings > Pages > Deploy from a branch > main > / (root) > Save.
+  4. Dirección: https://fledesma2025.github.io/navisaf-telemetria/
+     Enlace directo de prueba: https://fledesma2025.github.io/navisaf-telemetria/?db=iym_pruebas&veh=GDK499
+
+USO
+  1. Entrar con base, usuario y contraseña de MyGeotab.
+  2. Elegir el vehículo (si el usuario tiene solo uno, entra directo).
+  3. Tocar "Iniciar" y permitir la ubicación.
+  4. Botón de ajustes: agregar/quitar datos, ordenarlos, mínimo/máximo y frecuencia (5, 10 o 30 s).
+
+MODO PANTALLA DEL VEHÍCULO (horizontal)
+  Se activa solo cuando el equipo está en horizontal (tablet o radio Android del carro, desde 900 px de ancho).
+  En vertical vuelve al diseño del celular. Para forzarlo: agregar ?modo=vehiculo al enlace.
+
+FOTO DEL VEHÍCULO
+  1. Botón "Cambiar foto" en la pantalla: el conductor toma o elige una foto; se guarda en ese equipo.
+     Si la foto tiene fondo blanco (tipo catálogo), la app le quita el fondo sola.
+  2. Foto para toda la flota: subir al repositorio, en la carpeta "vehiculos", un archivo con el
+     nombre del vehículo en MAYÚSCULAS y extensión .webp. Ejemplo: vehiculos/GDK499.webp
+  3. Si no hay foto, se muestra una silueta.
+
+NOTA SOBRE EL "TIEMPO REAL"
+  Cada tarjeta muestra "hace X s": la hora real en que el vehículo midió el dato.
+  El equipo GO envía por lotes: es normal ver entre 10 s y 1-2 min de retraso.

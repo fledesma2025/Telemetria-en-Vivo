@@ -1,0 +1,1270 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0F447E">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="application-name" content="Navisaf Telemetría">
+<title>Navisaf · Telemetría en vivo</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAESUlEQVR4nO2ZW0xbdRzHP+e0lLYUysa4gwI65yYjCALObZkwLiNGY7hMY3xYog8+mCwa9cVkvpEYjdEXzdyriTEDBpkuGyuiZnEwxuIi2+QiCyJQyIot0HvPqQ/c2hhDTy80S/p967/n9/19vz2//vr7nQq6ylMPAD0PJ9xq1sTr4q0kTKjEeCuIFAkD8UbCQLyRMBBvJAxEC6JGA4KgOE4dAy2KoEpNJaP9VZKLipHtdpYu9uK8OxpyfNzvQF5LK8lFxQCIKSnsaTuJKjU15Pi43IFH8/bQUl9FS30V75pTMLukAEVqknLzkFbGQuLaMQOBoisPFG+e5y/OYg4oBL8k4V1YCJk3pgYKczJ4qbaClvoqni17HGH9S3pvao5u0zDnrwwyteyh9PTbWEQtoixhudiLZLOGnCPqBkIRPT5t3rxeFAU6q9Nxa/UcanmfVeuKonxRMaBUdCAOlz9BXtYuen8cYVmheFBoQFvyGOnNL6A2piNMT9EsWHil9mnFogPR1lgDQOfVG4rFgwIDYoqBzNdeB03y2sG+A6QW6jl00MjtsWm6TcN0m4b5c2Yx5OQqUeTlukrsTjeXr91WLB4UGNAUFmyJX8flaRs9ZzoUiQ7EsWeeJHN3Gp19N7A73WFxhPxDJlmWwB98VpZl4OxHb/LWyeNk7U77b9A2o8FG+XSZwisfAEFXecpBiEu98fnjpNXWgSCg97r4sECmtaIEQRCQZT9Dv0+u1f+t+4h1J1Bn5+CZmWGp5zw+y1IQV5Jaxf0rn5OUpKao4TROtycc/R5FBgBURiOqNCPe+Xn8Pi97H8mhvamG1oZq9pfkIfmhfmCBOZe8lWX2bxbOfhnE03S4jAtfvMO3l67zxpmvwxEP4FHcRiWbDclm23w98ZeZjnO9dJzrpXRvIU0njjKXWRoUo8kvQEzWIAd8ym2N1QB0Xh0KVzwQ5WFudGKGz776Dr/LFXQu2axB4pM1al48VoF12U7/4J2IckZ9GvX7JCw9Xcieta6ySyNiGPwp6JrG58pIM+joGRjB4/VFlC8m47Tz7h3mP/mYI5NDDNRm0f5UbtD7G+XT1Rd+99lAzPYB2e2i//sBNIJ/s10C6LUamo+UY7Gu8vPNexHnielCs7i0zLVbY+wrymV/ST4AzUfLMeiT6TYN45PkbRi2R8w3sm7TMAAt9VUAtDWsd5++yLrPBmJu4EL/TXySTHtTDal6LY2HD7JgsfHrbxNR4Y/5RvbgnxV6h8e5rs2h5L0P+HTShWF0BEmOvHxgJ1ZKQaRjVsWqzglqLd9M29HZovd3RMxLKCkjg1WdIejMkVuIoFJFhT/mBiSHHfzB5SI7Hfgl6X8ilCHmBmSHA1t//9YoLstYL/0QNf4deayy/MsAzvE/0GRn456ZwbdkiRr3jj0X8prn8Zrno84b90eLkSJhIN5IGIg3EgbijYfegBpwA9GZrHYe7n8BPEuANnb8FSgAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Sora:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300..400,0,0&display=block">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+:root{
+  --navy:#0F447E;--navy9:#082A52;--cyan:#26B5E6;--cyan-txt:#1B7FA8;
+  --bg:#EFF3F7;--surface:#FFFFFF;--surface2:#EFF3F7;
+  --heading:#0F447E;--ink:#525F81;--ink2:#3C4767;--muted:#8A93A8;--line:#D8E1EA;
+  --success:#1E8E5A;--warn:#E0A020;--danger:#C0332F;
+  --title:'Sora',Arial,sans-serif;--body:'Poppins',Arial,sans-serif;
+  --shadow:0 8px 22px rgba(11,33,56,.14);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root{--bg:#0A1422;--surface:#0F1C2E;--surface2:#16263C;--heading:#E6EEF7;--ink:#B4C0D6;--ink2:#DCE5F0;--muted:#7F8BA3;--line:#22324A;--cyan-txt:#5CCBF0;--shadow:0 8px 22px rgba(0,0,0,.45);color-scheme:dark}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:var(--body);color:var(--ink);background:var(--bg);-webkit-tap-highlight-color:transparent;overflow:hidden;font-size:15px}
+button,input{font:inherit;color:inherit}
+[hidden]{display:none!important}
+.icon{font-family:'Material Symbols Rounded';font-weight:normal;font-style:normal;font-size:22px;line-height:1;display:inline-block;
+  font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;-webkit-font-smoothing:antialiased;user-select:none;white-space:nowrap}
+.btn{font-weight:600;border-radius:999px;padding:12px 20px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1.5px solid transparent;cursor:pointer;font-size:.93rem;transition:transform .1s}
+.btn:active{transform:scale(.97)}
+.btn .icon{font-size:20px}
+.btn.primary{background:var(--cyan);color:#fff;box-shadow:0 8px 22px rgba(38,181,230,.28)}
+.btn.ghost{background:transparent;border-color:var(--heading);color:var(--heading)}
+.btn.light{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn.sm{padding:8px 14px;font-size:.82rem}
+.btn:disabled{opacity:.6;cursor:wait}
+.ibtn{width:44px;height:44px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;background:transparent;flex:none}
+.ibtn.sm{width:34px;height:34px}.ibtn.sm .icon{font-size:20px}
+
+/* ---------- Pantallas de entrada ---------- */
+.screen{position:fixed;inset:0;overflow-y:auto;background:linear-gradient(135deg,#0F447E,#082A52);color:#fff;
+  padding:calc(env(safe-area-inset-top,0px) + 28px) 22px calc(env(safe-area-inset-bottom,0px) + 28px)}
+.wrap{max-width:440px;margin:0 auto}
+.logo svg{display:block;height:30px;width:auto}
+.hero{margin:36px 0 24px}
+.bar{width:38px;height:3px;background:var(--cyan);border-radius:3px;margin-bottom:16px}
+.hero h1{font-family:var(--title);font-weight:800;font-size:2rem;line-height:1.15}
+.hero p{color:#B9D4EC;margin-top:10px;line-height:1.55;font-size:.95rem;max-width:36ch}
+.card{background:var(--surface);color:var(--ink);border-radius:18px;padding:22px 18px;box-shadow:0 18px 40px rgba(0,0,0,.25);display:flex;flex-direction:column;gap:14px}
+.card h2{font-family:var(--title);font-weight:700;color:var(--heading);font-size:1.05rem}
+.field{display:flex;flex-direction:column;gap:6px;font-weight:500;font-size:.85rem;color:var(--ink2)}
+.input{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--surface);color:var(--ink2);font-size:1rem}
+.input:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(38,181,230,.2)}
+.input.sm{padding:6px 8px;font-size:.85rem;border-radius:8px;width:72px}
+.pwd{position:relative}.pwd .input{padding-right:50px}
+.pwd .ibtn{position:absolute;right:2px;top:50%;transform:translateY(-50%);color:var(--muted)}
+details.adv summary{cursor:pointer;color:var(--muted);font-size:.82rem;list-style:none;display:flex;align-items:center;gap:4px}
+details.adv summary::-webkit-details-marker{display:none}
+details.adv[open] summary .icon{transform:rotate(90deg)}
+details.adv .field{margin-top:10px}
+.err{background:rgba(192,51,47,.1);color:var(--danger);border-radius:10px;padding:10px 12px;font-size:.85rem;line-height:1.4}
+.note{color:#8FB3D6;font-size:.78rem;line-height:1.5;margin-top:18px;text-align:center}
+.search{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:0 14px;background:var(--surface)}
+.search .icon{color:var(--muted);font-size:20px}
+.search input{border:0;outline:0;background:transparent;padding:10px 0;width:100%;color:var(--ink2)}
+.vlist{display:flex;flex-direction:column;max-height:56vh;overflow-y:auto;margin:0 -8px}
+.vitem{display:flex;align-items:center;gap:12px;border:0;background:none;text-align:left;padding:12px 10px;border-radius:12px;cursor:pointer;width:100%}
+.vitem:active{background:var(--surface2)}
+.vitem + .vitem{border-top:1px solid var(--line);border-radius:0}
+.vitem .icon{color:var(--heading)}
+.vitem b{display:block;font-weight:500;color:var(--ink2)}
+.vitem small{color:var(--muted);font-size:.78rem}
+.empty{color:var(--muted);text-align:center;padding:18px 10px;font-size:.88rem;line-height:1.5}
+
+/* ---------- App ---------- */
+#app{position:fixed;inset:0}
+.appbar{position:absolute;top:0;left:0;right:0;z-index:1100;background:linear-gradient(135deg,#0F447E,#082A52);color:#fff;
+  display:flex;align-items:center;gap:6px;padding:calc(env(safe-area-inset-top,0px) + 8px) 4px 8px 14px;box-shadow:0 4px 14px rgba(8,42,82,.25)}
+.appbar .logo svg{height:20px}
+.meta{margin-left:auto;text-align:right;line-height:1.25;min-width:0;padding-right:2px}
+.meta b{display:block;font-weight:500;font-size:.8rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:40vw}
+.meta span{font-size:.7rem;color:#B9D4EC;display:inline-flex;align-items:center;gap:6px}
+.meta i{width:8px;height:8px;border-radius:50%;background:var(--warn)}
+.meta.ok i{background:#2ECC8F;animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(46,204,143,.7)}70%{box-shadow:0 0 0 7px rgba(46,204,143,0)}100%{box-shadow:0 0 0 0 rgba(46,204,143,0)}}
+.appbar .ibtn{color:#fff;width:40px;height:40px}
+#map{position:absolute;top:var(--bar-h,56px);left:0;right:0;bottom:0;background:var(--surface2)}
+.leaflet-container{font-family:var(--body)}
+.leaflet-control-attribution{font-size:9px!important}
+.fabs{position:absolute;right:12px;bottom:calc(var(--sheet-h,300px) + 14px);z-index:1000;display:flex;flex-direction:column;gap:10px;transition:bottom .25s}
+.fab{background:var(--surface);color:var(--heading);box-shadow:var(--shadow)}
+.fab[aria-pressed="true"]{background:var(--navy);color:#fff}
+
+/* Panel de telemetría */
+.sheet{position:absolute;left:0;right:0;bottom:0;z-index:1050;background:var(--surface);border-radius:20px 20px 0 0;box-shadow:0 -8px 24px rgba(11,33,56,.16);
+  max-height:74vh;display:flex;flex-direction:column;padding:0 12px calc(env(safe-area-inset-bottom,0px) + 10px);overflow:hidden;transition:max-height .25s ease}
+.sheet.collapsed{max-height:calc(176px + env(safe-area-inset-bottom,0px))}
+.handle{width:100%;height:22px;border:0;background:none;display:grid;place-items:center;cursor:pointer;flex:none}
+.handle span{width:42px;height:4px;border-radius:4px;background:var(--line)}
+.sh-head{display:flex;align-items:center;gap:10px;padding:0 4px 10px;flex:none}
+.sh-head h2{font-family:var(--title);font-weight:700;color:var(--heading);font-size:1rem;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pill{border-radius:999px;padding:5px 11px;font-size:.75rem;font-weight:500;white-space:nowrap}
+.pill.on{background:rgba(30,142,90,.14);color:var(--success)}
+.pill.off{background:rgba(138,147,168,.18);color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;overflow-y:auto;min-height:0;padding:2px 2px 6px}
+.tcard{background:var(--surface2);border-radius:14px;padding:12px 12px 8px;display:flex;flex-direction:column;gap:2px;border:1.5px solid transparent;position:relative;min-width:0}
+.tcard.bad{border-color:var(--danger);background:rgba(192,51,47,.08)}
+.tcard.stale{opacity:.6}
+.tc-top{display:flex;align-items:flex-start;gap:6px}
+.tc-name{font-size:.75rem;color:var(--muted);line-height:1.25;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.tc-age{font-size:.68rem;color:var(--muted);white-space:nowrap}
+.tc-val{display:flex;align-items:baseline;gap:4px;min-width:0}
+.tc-val b{font-family:var(--title);font-weight:800;font-size:1.65rem;color:var(--heading);line-height:1.1;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tc-val small{font-size:.75rem;color:var(--muted)}
+.tcard.bad .tc-val b{color:var(--danger)}
+.tcard.gps .tc-val b{color:var(--cyan)}
+.spark{width:100%;height:26px;display:block;margin-top:2px}
+.spark path{fill:none;stroke:var(--cyan);stroke-width:1.6;vector-effect:non-scaling-stroke}
+.tcard.bad .spark path{stroke:var(--danger)}
+.addcard{border:1.5px dashed var(--line);background:transparent;border-radius:14px;display:grid;place-items:center;gap:4px;color:var(--muted);cursor:pointer;min-height:96px;font-size:.8rem;padding:10px;text-align:center}
+.addcard .icon{font-size:26px;color:var(--heading)}
+
+/* Marcador del celular */
+.me{width:52px;height:52px;position:relative;display:grid;place-items:center}
+.me .arrow{position:relative;z-index:2;width:38px;height:38px;border-radius:50%;background:var(--cyan);color:#fff;display:grid;place-items:center;font-size:22px;
+  border:3px solid #fff;box-shadow:0 4px 12px rgba(8,42,82,.45);transition:transform .8s ease}
+.me .pulse{position:absolute;inset:0;border-radius:50%;background:rgba(38,181,230,.35);animation:pulse 1.8s ease-out infinite}
+.me.stale .arrow{background:#8A93A8}.me.stale .pulse{display:none}
+@keyframes pulse{0%{transform:scale(.55);opacity:1}100%{transform:scale(1.35);opacity:0}}
+
+/* Configuración */
+.modal{position:absolute;inset:0;z-index:1300;background:rgba(8,42,82,.6);display:flex;align-items:flex-end;justify-content:center}
+.panel{background:var(--surface);width:100%;max-width:560px;max-height:92vh;border-radius:20px 20px 0 0;display:flex;flex-direction:column;overflow:hidden;
+  padding-bottom:env(safe-area-inset-bottom,0px)}
+.panel-head{display:flex;align-items:center;gap:8px;padding:14px 10px 10px 18px;border-bottom:1px solid var(--line);flex:none}
+.panel-head h2{font-family:var(--title);font-weight:700;color:var(--heading);font-size:1.1rem;flex:1}
+.panel-head .ibtn{color:var(--heading)}
+.panel-body{overflow-y:auto;padding:14px 18px 22px;display:flex;flex-direction:column;gap:18px}
+.sec h3{font-family:var(--title);font-weight:600;color:var(--heading);font-size:.92rem;margin-bottom:4px}
+.sec p.hint{font-size:.78rem;color:var(--muted);line-height:1.45;margin-bottom:10px}
+.seg{display:inline-flex;background:var(--surface2);border-radius:999px;padding:3px}
+.seg button{border:0;background:transparent;border-radius:999px;padding:8px 14px;font-size:.82rem;color:var(--muted);cursor:pointer;font-weight:500}
+.seg button.on{background:var(--navy);color:#fff}
+.mrow{display:flex;align-items:center;gap:8px;padding:10px 0;border-top:1px solid var(--line)}
+.mrow:first-of-type{border-top:0}
+.mrow .nm{flex:1;min-width:0}
+.mrow .nm b{display:block;font-weight:500;color:var(--ink2);font-size:.88rem;line-height:1.3}
+.mrow .nm small{color:var(--muted);font-size:.74rem}
+.mrow .lims{display:flex;gap:6px;align-items:center;font-size:.72rem;color:var(--muted);margin-top:6px}
+.mrow .ibtn{color:var(--heading)}
+.mrow .ibtn.del{color:var(--danger)}
+.mrow .add{color:var(--success)}
+
+.start{position:absolute;inset:0;z-index:1250;background:rgba(8,42,82,.78);display:grid;place-items:center;padding:24px}
+.start-card{background:var(--surface);border-radius:20px;padding:26px 22px;max-width:380px;width:100%;text-align:center;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.start-card .icon.big{font-size:44px;color:var(--cyan)}
+.start-card h2{font-family:var(--title);font-weight:700;color:var(--heading);font-size:1.3rem;margin:10px 0 8px}
+.start-card p{color:var(--ink);font-size:.9rem;line-height:1.55;margin-bottom:18px}
+.start-card .btn{width:100%}
+
+.loading{position:fixed;inset:0;z-index:1400;background:rgba(8,42,82,.82);display:grid;place-items:center;color:#fff;font-weight:500;text-align:center;padding:20px}
+.spinner{width:38px;height:38px;border-radius:50%;border:3px solid rgba(38,181,230,.25);border-top-color:var(--cyan);animation:spin .9s linear infinite;margin:0 auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--sheet-h,300px) + 18px);z-index:1500;background:#3C4767;color:#fff;
+  padding:10px 16px;border-radius:999px;font-size:.84rem;max-width:90vw;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .2s;text-align:center}
+.toast.show{opacity:1}
+/* Tablero de relojes y formas de ver los datos */
+.dash{grid-column:1/-1;background:#0B2747;border-radius:18px;padding:10px 6px 8px;display:flex;flex-wrap:wrap;justify-content:space-around;align-items:flex-end;gap:4px 2px}
+.gauge{display:flex;flex-direction:column;align-items:center;min-width:0}
+.gauge svg{display:block;width:100%;height:auto}
+.gauge text{font-family:var(--body)}
+.gauge .gl{font-size:.7rem;color:#9DB8D6;margin-top:0;text-align:center;line-height:1.3;padding:0 4px}
+.gauge.bad .gl{color:#F28A83}
+.tcard.wide{grid-column:1/-1}
+.chart{width:100%;height:64px;display:block;flex:1;min-width:0}
+.chart .ln{fill:none;stroke:var(--cyan);stroke-width:2;vector-effect:non-scaling-stroke}
+.chart .area{fill:rgba(38,181,230,.12)}
+.chart .lim{fill:none;stroke:var(--danger);stroke-width:1;stroke-dasharray:4 3;vector-effect:non-scaling-stroke}
+.tcard.bad .chart .ln{stroke:var(--danger)}
+.chart-ax{display:flex;justify-content:space-between;font-size:.66rem;color:var(--muted);margin-top:2px}
+.nochart{flex:1;font-size:.75rem;color:var(--muted);align-self:center}
+.bar{position:relative;width:100%;height:12px;border-radius:6px;background:var(--line);margin-top:6px}
+.bar i{display:block;height:100%;border-radius:6px;background:var(--cyan)}
+.tcard.bad .bar{background:rgba(192,51,47,.18)}.tcard.bad .bar i{background:var(--danger)}
+.bar b{position:absolute;top:-3px;width:2px;height:18px;background:var(--ink2)}
+.bar-ax{font-size:.66rem;color:var(--muted);margin-top:5px}
+.gpschip{border-radius:999px;padding:5px 10px;font-size:.75rem;font-weight:500;background:rgba(38,181,230,.14);color:var(--cyan-txt);white-space:nowrap}
+.drow{border-top:1px solid var(--line);padding:10px 0}
+.drow:first-child{border-top:0}
+.dtop{display:flex;align-items:center;gap:4px}
+.dtop .nm{flex:1;min-width:0}
+.dtop .nm b{display:block;font-weight:500;color:var(--ink2);font-size:.9rem;line-height:1.3}
+.dtop .nm small{color:var(--muted);font-size:.74rem}
+.drow.off .nm b{color:var(--muted)}
+.dtop .ibtn{color:var(--heading)}
+.sw{width:48px;height:28px;border-radius:999px;border:0;padding:3px;cursor:pointer;display:flex;background:#C3CEDA;flex:none;margin-left:4px}
+.sw span{width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.sw[aria-pressed="true"]{background:var(--success);justify-content:flex-end}
+.views{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.views button{border:1.5px solid var(--line);background:var(--surface);color:var(--ink2);border-radius:999px;padding:7px 12px;font-size:.78rem;font-weight:500;cursor:pointer;min-height:34px}
+.views button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.lims2{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:.74rem;color:var(--muted);margin-top:8px}
+
+/* ===== Modo pantalla del vehículo (horizontal) ===== */
+#carView{position:fixed;inset:0;z-index:1080;color:#fff;background:#061428;display:grid;
+  grid-template-columns:minmax(230px,23%) minmax(0,1fr) minmax(240px,24%);grid-template-rows:50px minmax(0,1fr) 62px;gap:12px;
+  padding:0 max(16px,env(safe-area-inset-right,0px)) max(12px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));overflow:hidden}
+.car-bg{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+#carView>*:not(.car-bg){position:relative;z-index:1}
+.car-top{grid-column:1/-1;display:flex;align-items:center;gap:18px;min-width:0}
+.car-top .logo svg{height:20px}
+.car-name{flex:1;text-align:center;font-family:var(--title);font-weight:600;font-size:.95rem;letter-spacing:.12em;color:#C9DDF0;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.car-stat{display:flex;align-items:center;gap:14px;font-size:.8rem;color:#C9DDF0;white-space:nowrap}
+.car-stat i{width:8px;height:8px;border-radius:50%;background:var(--warn);display:inline-block;margin-right:6px}
+.car-stat i.ok{background:#2ECC8F}
+.car-stat b{font-family:var(--title);font-weight:600;color:#fff;font-size:.95rem}
+.glass{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:22px;min-height:0}
+.car-left{padding:18px;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+.c-hi{font-size:.85rem;color:#C9DDF0}
+.c-name{font-family:var(--title);font-weight:800;font-size:clamp(1.4rem,2.6vw,2.1rem);line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c-sub{font-size:.75rem;color:#9DB8D6}
+.c-clock{display:flex;align-items:center;gap:12px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.12)}
+.c-clock b{font-family:var(--title);font-weight:700;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1;white-space:nowrap}
+.c-clock b small{font-size:.9rem;margin-left:4px}
+.c-clock span{font-size:.75rem;color:#C9DDF0;line-height:1.4;border-left:1px solid rgba(255,255,255,.2);padding-left:10px}
+.c-trip-h{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:#9DB8D6;letter-spacing:.04em}
+.c-chip{font-size:.68rem;color:#7FD3F2;background:rgba(38,181,230,.15);border-radius:999px;padding:3px 9px;letter-spacing:0}
+.c-trip{display:flex;align-items:center;gap:10px}
+.c-trip .km{flex:1;font-family:var(--title);font-weight:800;font-size:clamp(1.8rem,3.2vw,2.5rem)}
+.c-trip .km small{font-size:.85rem;font-weight:500;color:#C9DDF0;margin-left:4px}
+.c-compass{width:78px;height:78px;flex:none}
+.c-compass .ndl{transform-origin:43px 43px;transition:transform .8s ease}
+.c-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.c-stats div{font-size:.68rem;color:#9DB8D6}.c-stats b{display:block;color:#fff;font-weight:600;font-size:.88rem}
+.c-mini{margin-top:auto;flex:1;min-height:110px;max-height:190px;border-radius:16px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,.1);background:#0E2440}
+.c-mini #map{position:absolute;inset:0;top:0}
+.c-mini-btn{position:absolute;left:8px;bottom:8px;z-index:500;border:0;border-radius:999px;padding:6px 12px;font-size:.72rem;color:#fff;background:rgba(6,20,40,.78);cursor:pointer}
+#carView.mapbig .c-mini{position:fixed;left:16px;right:16px;top:58px;bottom:86px;max-height:none;z-index:20;margin:0}
+.car-center{display:flex;flex-direction:column;gap:10px;min-height:0;min-width:0}
+.c-hero{flex:1;min-height:0;position:relative;overflow:hidden}
+.c-hero img{position:absolute;inset:6px 0 0;width:100%;height:calc(100% - 6px);object-fit:contain;filter:drop-shadow(0 14px 20px rgba(0,0,0,.4))}
+.c-hero .sil{position:absolute;inset:0;margin:auto;width:80%;height:100%}
+.c-photo{position:absolute;right:4px;top:4px;display:flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:rgba(6,20,40,.6);color:#fff;font-size:.8rem;cursor:pointer}
+.c-photo .icon{font-size:18px}
+.car-gauges{flex:none;height:clamp(150px,32vh,230px);background:rgba(11,39,71,.78);border:1px solid rgba(255,255,255,.14);border-radius:22px;display:flex;align-items:center;justify-content:space-around;gap:6px;padding:6px 12px}
+.car-gauges .gauge{width:auto!important;height:100%;justify-content:center}
+.car-gauges .gauge svg{height:calc(100% - 18px);width:auto;aspect-ratio:200/178}
+.c-gps{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.72rem;color:#9DB8D6;text-align:center}
+.c-gps b{font-family:var(--title);font-weight:800;font-size:clamp(2rem,4vw,2.9rem);line-height:1;color:#7FD3F2}
+.c-gps .pill{margin-top:4px}
+.car-right{padding:16px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.c-rh{display:flex;justify-content:space-between;align-items:center}
+.c-rh b{font-family:var(--title);font-weight:700;font-size:1.05rem}.c-rh span{font-size:.7rem;color:#9DB8D6}
+.car-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:8px;overflow-y:auto;min-height:0;align-content:start}
+.car-cards .tcard{background:rgba(255,255,255,.06);border-color:transparent;padding:10px 12px 8px}
+.car-cards .tc-name,.car-cards .tc-age,.car-cards .tc-val small,.car-cards .chart-ax,.car-cards .bar-ax{color:#9DB8D6}
+.car-cards .tc-val b{color:#fff;font-size:1.45rem}
+.car-cards .tc-top{flex-direction:column;gap:0}.car-cards .tc-name{-webkit-line-clamp:2}
+.car-cards .tcard.bad{background:rgba(229,87,79,.14);border-color:#E5574F}
+.car-cards .tcard.bad .tc-val b{color:#FF8A82}
+.car-cards .bar{background:rgba(255,255,255,.12)}.car-cards .bar b{background:#fff}
+.car-cards .chart-ax{padding-left:0!important}
+.car-cards .nochart{color:#9DB8D6}
+.car-cards .empty{grid-column:1/-1;color:#9DB8D6}
+.car-dock{grid-column:1/-1;display:flex;align-items:center;justify-content:space-around;gap:6px;padding:0 14px;border-radius:20px}
+.car-dock button{display:flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:0;background:transparent;color:#C9DDF0;font-size:.88rem;cursor:pointer;position:relative}
+.car-dock button.on{background:var(--cyan);color:#fff;font-weight:600}
+.car-dock .badge{min-width:18px;height:18px;border-radius:9px;background:#E5574F;font-size:.7rem;display:grid;place-items:center;color:#fff;padding:0 4px}
+body.car .appbar,body.car .sheet,body.car .fabs{display:none!important}
+body.car .toast{bottom:90px}
+@media (max-height:520px){#carView{grid-template-rows:44px minmax(0,1fr) 54px;gap:8px}.c-mini{display:none}.car-left{gap:8px}}
+
+@media (min-width:760px){
+  .sheet,.sheet.collapsed{left:16px;right:auto;width:440px;bottom:16px;border-radius:20px;max-height:calc(100% - var(--bar-h,56px) - 32px);padding-bottom:12px}
+  .sheet.collapsed{max-height:176px}
+  .fabs{bottom:24px}.toast{bottom:24px}
+  .modal{align-items:center}.panel{border-radius:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= INICIO DE SESIÓN ================= -->
+<section id="login" class="screen">
+  <div class="wrap">
+    <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="219" height="43" viewBox="0 0 219 43" fill="none"><g clip-path="url(#clip0_2032_4686)"><path d="M41.558 2.27273C41.3119 2.02882 41.0016 1.85748 40.6621 1.778C40.3226 1.69853 39.9672 1.71409 39.6362 1.82293L2.05788 14.2045C1.68665 14.3267 1.36381 14.5608 1.13505 14.8738C0.906292 15.1868 0.783203 15.5627 0.783203 15.9485C0.783203 16.3342 0.906292 16.7101 1.13505 17.0231C1.36381 17.3361 1.68665 17.5703 2.05788 17.6924L19.8101 23.6741L25.7195 40.9798C25.8456 41.3447 26.0845 41.6616 26.4025 41.8859C26.7206 42.1103 27.102 42.231 27.4931 42.231C27.8843 42.231 28.2656 42.1103 28.5837 41.8859C28.9018 41.6616 29.1406 41.3447 29.2667 40.9798L41.9984 4.16666C42.1117 3.84194 42.1306 3.49241 42.0527 3.15768C41.9749 2.82295 41.8035 2.51639 41.558 2.27273ZM37.242 6.49461L27.5051 34.6589L23.0611 21.646C22.9663 21.3839 22.8127 21.1462 22.6116 20.9508C22.4106 20.7554 22.1673 20.6073 21.9 20.5175L8.47975 15.9485L37.242 6.49461Z" fill="white"></path><path d="M42.5833 1.30201C41.6914 0.471799 40.5111 0.00927734 39.2843 0.00927734C38.0575 0.00927734 36.8771 0.471799 35.9853 1.30201C35.3346 1.94473 34.8918 2.7631 34.7128 3.65373C34.5338 4.54436 34.6267 5.46728 34.9798 6.30589C35.3328 7.14451 35.9301 7.86119 36.6963 8.36539C37.4624 8.86959 38.363 9.13869 39.2843 9.13869C40.2055 9.13869 41.1061 8.86959 41.8723 8.36539C42.6384 7.86119 43.2358 7.14451 43.5888 6.30589C43.9418 5.46728 44.0347 4.54436 43.8558 3.65373C43.6768 2.7631 43.234 1.94473 42.5833 1.30201Z" fill="#26B5E6"></path><path d="M1.36144 12.626C0.708021 13.2692 0.262865 14.089 0.0822923 14.9816C-0.0982801 15.8741 -0.00615462 16.7995 0.347013 17.6404C0.700181 18.4814 1.29852 19.2003 2.06633 19.706C2.83414 20.2118 3.73692 20.4818 4.66045 20.4818C5.58398 20.4818 6.48676 20.2118 7.25457 19.706C8.02238 19.2003 8.62072 18.4814 8.97389 17.6404C9.32706 16.7995 9.41919 15.8741 9.23861 14.9816C9.05804 14.089 8.61288 13.2692 7.95947 12.626C7.08312 11.7663 5.89695 11.2837 4.66045 11.2837C3.42395 11.2837 2.23778 11.7663 1.36144 12.626Z" fill="#26B5E6"></path><path d="M24.4065 18.9392C23.5147 18.109 22.3343 17.6465 21.1075 17.6465C19.8807 17.6465 18.7004 18.109 17.8085 18.9392C17.1578 19.5819 16.715 20.4003 16.536 21.2909C16.3571 22.1816 16.45 23.1045 16.803 23.9431C17.156 24.7817 17.7534 25.4984 18.5195 26.0026C19.2857 26.5068 20.1863 26.7759 21.1075 26.7759C22.0288 26.7759 22.9294 26.5068 23.6955 26.0026C24.4617 25.4984 25.059 24.7817 25.412 23.9431C25.7651 23.1045 25.858 22.1816 25.679 21.2909C25.5 20.4003 25.0572 19.5819 24.4065 18.9392Z" fill="#26B5E6"></path><path d="M24.214 35.156C23.5606 35.7992 23.1154 36.619 22.9348 37.5116C22.7543 38.4041 22.8464 39.3295 23.1996 40.1704C23.5527 41.0114 24.1511 41.7303 24.9189 42.236C25.6867 42.7418 26.5895 43.0118 27.513 43.0118C28.4365 43.0118 29.3393 42.7418 30.1071 42.236C30.8749 41.7303 31.4733 41.0114 31.8264 40.1704C32.1796 39.3295 32.2717 38.4041 32.0912 37.5116C31.9106 36.619 31.4654 35.7992 30.812 35.156C29.9201 34.3258 28.7398 33.8633 27.513 33.8633C26.2862 33.8633 25.1058 34.3258 24.214 35.156Z" fill="#26B5E6"></path><path d="M56.452 40.0959C56.452 42.1713 55.9235 42.6921 53.8256 42.6921H53.0248C50.9189 42.6921 50.3984 42.1713 50.3984 40.0959V24.037C50.4465 16.5717 54.6984 12.8628 63.1701 12.8628C72.0662 12.8628 75.8537 16.5717 75.8537 24.037V40.0959C75.8537 42.1713 75.3252 42.6921 73.2193 42.6921H72.4186C70.3206 42.6921 69.7922 42.1713 69.7922 40.0959V24.037C69.7922 20.0913 68.3348 18.3946 63.1301 18.3946C57.9253 18.3946 56.4119 20.1149 56.4119 24.037L56.452 40.0959Z" fill="white"></path><path d="M97.2012 25.1261V22.3089C97.2012 18.9077 94.9271 17.9292 90.3069 17.9292C88.25 17.9045 86.1956 18.079 84.1733 18.45C82.4838 18.7341 82.0113 18.3948 82.0113 16.6035V15.7828C82.0113 14.1177 82.4838 13.5969 84.1172 13.3128C86.0496 13.0009 88.0045 12.8452 89.9626 12.8472C98.4263 12.8472 103.159 15.4356 103.159 22.3168V33.4752C103.159 39.8672 99.3632 42.6923 90.7153 42.6923C82.8281 42.6923 78.8564 39.7488 78.8564 33.8224C78.8564 27.6593 83.0683 25.1419 90.7793 25.1419H92.573C92.9595 25.1419 93.3302 25.2932 93.6035 25.5626C93.8768 25.8319 94.0303 26.1972 94.0303 26.5781V28.1564C94.0303 28.5499 93.8717 28.9272 93.5894 29.2055C93.3071 29.4837 92.9242 29.64 92.5249 29.64H90.7793C86.7757 29.64 84.8779 30.7921 84.8779 33.7277C84.8779 36.6633 87.096 37.6734 90.6032 37.6734C94.9832 37.6734 97.2012 36.8053 97.2012 33.1832V25.1261Z" fill="white"></path><path d="M117.01 34.7219C117.539 36.963 118.3 37.4839 119.933 37.4839C121.567 37.4839 122.335 37.0262 122.856 34.7219L127.412 16.0036C127.876 13.9913 128.517 13.4705 130.615 13.4705H131.488C133.594 13.4705 134.002 13.9913 133.473 16.0036L128.805 35.006C128.101 37.8311 127.204 39.8434 126.059 40.9403C124.914 42.0372 122.912 42.6132 119.933 42.6132C116.954 42.6132 114.904 42.1003 113.799 41.035C112.694 39.9696 111.75 37.9258 111.053 35.0454L106.377 16.043C105.848 14.0307 106.265 13.5099 108.363 13.5099H109.243C111.341 13.5099 111.982 14.0307 112.446 16.043L117.01 34.7219Z" fill="white"></path><path d="M140.096 13.4941H139.328C137.877 13.4941 136.701 14.653 136.701 16.0825V40.0407C136.701 41.4702 137.877 42.629 139.328 42.629H140.096C141.547 42.629 142.723 41.4702 142.723 40.0407V16.0825C142.723 14.653 141.547 13.4941 140.096 13.4941Z" fill="white"></path><path d="M145.733 38.1388C145.733 36.1265 146.206 35.6609 148.072 36.1265C150.853 36.8564 153.721 37.2226 156.599 37.2155C160.603 37.2155 162.036 36.5842 162.036 34.7455C162.036 33.3014 161.276 32.6149 158.297 31.2891L151.987 28.5271C147.983 26.8542 146.206 24.8971 146.206 20.691C146.206 15.3407 149.593 12.8628 157.36 12.8628C159.653 12.8486 161.937 13.1406 164.15 13.7308C166.192 14.3622 166.6 14.7094 166.6 16.6033V17.2977C166.6 19.31 166.072 19.7756 164.198 19.2548C161.937 18.627 159.597 18.3162 157.248 18.3315C153.452 18.3315 152.107 19.0259 152.107 20.6989C152.107 22.0878 152.804 22.7191 154.854 23.6424L161.628 26.5148C165.896 28.2983 167.882 30.3185 167.882 34.635C167.882 40.159 164.318 42.7 156.079 42.7C153.378 42.7109 150.688 42.3821 148.072 41.7215C146.142 41.2007 145.733 40.7982 145.733 38.8964V38.1388Z" fill="white"></path><path d="M198.189 16.4377C198.189 14.8594 198.598 14.3623 200.175 14.0703L203.274 13.4942V10.1562C203.274 2.84878 207.19 0.197288 213.796 0.197288C214.706 0.180066 215.616 0.275508 216.502 0.481377C218.544 0.891727 219.008 1.34943 219.008 3.25124V3.94568C219.055 4.28088 219.034 4.62196 218.944 4.94867C218.855 5.27537 218.7 5.58103 218.488 5.8475C217.839 6.36833 216.598 5.79226 214.204 5.79226C210.881 5.79226 209.24 7.11801 209.24 9.73794V13.4942H214.3C216.342 13.4942 216.75 13.8967 216.75 15.9169V16.5719C216.75 18.592 216.342 18.9945 214.3 18.9945H209.232V40.0644C209.232 42.1399 208.711 42.6607 206.605 42.6607H205.901C203.803 42.6607 203.274 42.1399 203.274 40.0644V19.0261H200.239C198.638 19.0261 198.189 18.6236 198.189 17.0059V16.4377Z" fill="white"></path><path d="M189.221 25.1261V22.3089C189.221 18.9077 186.947 17.9292 182.326 17.9292C180.27 17.9045 178.215 18.079 176.193 18.45C174.503 18.7341 174.031 18.3948 174.031 16.6035V15.7828C174.031 14.1177 174.503 13.5969 176.137 13.3128C178.069 13.0009 180.024 12.8452 181.982 12.8472C190.446 12.8472 195.178 15.4356 195.178 22.3168V33.4752C195.178 39.8672 191.383 42.6923 182.735 42.6923C174.848 42.6923 170.876 39.7488 170.876 33.8224C170.876 27.6593 175.088 25.1419 182.799 25.1419H184.593C184.979 25.1419 185.35 25.2932 185.623 25.5626C185.896 25.8319 186.05 26.1972 186.05 26.5781V28.1564C186.05 28.5499 185.891 28.9272 185.609 29.2055C185.327 29.4837 184.944 29.64 184.544 29.64H182.799C178.795 29.64 176.897 30.7921 176.897 33.7277C176.897 36.6633 179.116 37.6734 182.623 37.6734C187.003 37.6734 189.221 36.8053 189.221 33.1832V25.1261Z" fill="white"></path></g><defs><clipPath id="clip0_2032_4686"><rect width="219" height="43" fill="white"></rect></clipPath></defs></svg></div>
+    <div class="hero">
+      <div class="bar"></div>
+      <h1>Telemetría en vivo</h1>
+      <p>Tu posición con el GPS del celular y los datos de motor del vehículo que conduces, en tiempo real.</p>
+    </div>
+    <form id="loginForm" class="card" autocomplete="on">
+      <label class="field">Base de datos
+        <input class="input" id="fDb" name="database" required placeholder="ej. fleet_colombia" autocapitalize="off" autocorrect="off" spellcheck="false">
+      </label>
+      <label class="field">Usuario
+        <input class="input" id="fUser" name="username" required autocomplete="username" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="usuario@empresa.com">
+      </label>
+      <label class="field">Contraseña
+        <div class="pwd">
+          <input class="input" id="fPwd" name="password" type="password" required autocomplete="current-password">
+          <button type="button" class="ibtn" id="eyeBtn" aria-label="Mostrar contraseña"><span class="icon">visibility</span></button>
+        </div>
+      </label>
+      <details class="adv">
+        <summary><span class="icon" style="font-size:18px">chevron_right</span>Servidor (opcional)</summary>
+        <label class="field">Servidor MyGeotab
+          <input class="input" id="fServer" value="my.geotab.com" autocapitalize="off" autocorrect="off" spellcheck="false">
+        </label>
+      </details>
+      <div class="err" id="loginErr" hidden></div>
+      <button class="btn primary" type="submit" id="loginBtn"><span class="icon">login</span><span id="loginTxt">Conectar</span></button>
+    </form>
+    <div style="display:flex;flex-direction:column;margin-top:14px">
+      <button class="btn light" type="button" id="demoBtn"><span class="icon">play_circle</span>Probar en modo demo</button>
+    </div>
+    <p class="note">La base y el usuario se recuerdan en este equipo. La contraseña no se guarda.</p>
+  </div>
+</section>
+
+<!-- ================= ELEGIR VEHÍCULO ================= -->
+<section id="picker" class="screen" hidden>
+  <div class="wrap">
+    <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="219" height="43" viewBox="0 0 219 43" fill="none"><g clip-path="url(#clip0_2032_4686)"><path d="M41.558 2.27273C41.3119 2.02882 41.0016 1.85748 40.6621 1.778C40.3226 1.69853 39.9672 1.71409 39.6362 1.82293L2.05788 14.2045C1.68665 14.3267 1.36381 14.5608 1.13505 14.8738C0.906292 15.1868 0.783203 15.5627 0.783203 15.9485C0.783203 16.3342 0.906292 16.7101 1.13505 17.0231C1.36381 17.3361 1.68665 17.5703 2.05788 17.6924L19.8101 23.6741L25.7195 40.9798C25.8456 41.3447 26.0845 41.6616 26.4025 41.8859C26.7206 42.1103 27.102 42.231 27.4931 42.231C27.8843 42.231 28.2656 42.1103 28.5837 41.8859C28.9018 41.6616 29.1406 41.3447 29.2667 40.9798L41.9984 4.16666C42.1117 3.84194 42.1306 3.49241 42.0527 3.15768C41.9749 2.82295 41.8035 2.51639 41.558 2.27273ZM37.242 6.49461L27.5051 34.6589L23.0611 21.646C22.9663 21.3839 22.8127 21.1462 22.6116 20.9508C22.4106 20.7554 22.1673 20.6073 21.9 20.5175L8.47975 15.9485L37.242 6.49461Z" fill="white"></path><path d="M42.5833 1.30201C41.6914 0.471799 40.5111 0.00927734 39.2843 0.00927734C38.0575 0.00927734 36.8771 0.471799 35.9853 1.30201C35.3346 1.94473 34.8918 2.7631 34.7128 3.65373C34.5338 4.54436 34.6267 5.46728 34.9798 6.30589C35.3328 7.14451 35.9301 7.86119 36.6963 8.36539C37.4624 8.86959 38.363 9.13869 39.2843 9.13869C40.2055 9.13869 41.1061 8.86959 41.8723 8.36539C42.6384 7.86119 43.2358 7.14451 43.5888 6.30589C43.9418 5.46728 44.0347 4.54436 43.8558 3.65373C43.6768 2.7631 43.234 1.94473 42.5833 1.30201Z" fill="#26B5E6"></path><path d="M1.36144 12.626C0.708021 13.2692 0.262865 14.089 0.0822923 14.9816C-0.0982801 15.8741 -0.00615462 16.7995 0.347013 17.6404C0.700181 18.4814 1.29852 19.2003 2.06633 19.706C2.83414 20.2118 3.73692 20.4818 4.66045 20.4818C5.58398 20.4818 6.48676 20.2118 7.25457 19.706C8.02238 19.2003 8.62072 18.4814 8.97389 17.6404C9.32706 16.7995 9.41919 15.8741 9.23861 14.9816C9.05804 14.089 8.61288 13.2692 7.95947 12.626C7.08312 11.7663 5.89695 11.2837 4.66045 11.2837C3.42395 11.2837 2.23778 11.7663 1.36144 12.626Z" fill="#26B5E6"></path><path d="M24.4065 18.9392C23.5147 18.109 22.3343 17.6465 21.1075 17.6465C19.8807 17.6465 18.7004 18.109 17.8085 18.9392C17.1578 19.5819 16.715 20.4003 16.536 21.2909C16.3571 22.1816 16.45 23.1045 16.803 23.9431C17.156 24.7817 17.7534 25.4984 18.5195 26.0026C19.2857 26.5068 20.1863 26.7759 21.1075 26.7759C22.0288 26.7759 22.9294 26.5068 23.6955 26.0026C24.4617 25.4984 25.059 24.7817 25.412 23.9431C25.7651 23.1045 25.858 22.1816 25.679 21.2909C25.5 20.4003 25.0572 19.5819 24.4065 18.9392Z" fill="#26B5E6"></path><path d="M24.214 35.156C23.5606 35.7992 23.1154 36.619 22.9348 37.5116C22.7543 38.4041 22.8464 39.3295 23.1996 40.1704C23.5527 41.0114 24.1511 41.7303 24.9189 42.236C25.6867 42.7418 26.5895 43.0118 27.513 43.0118C28.4365 43.0118 29.3393 42.7418 30.1071 42.236C30.8749 41.7303 31.4733 41.0114 31.8264 40.1704C32.1796 39.3295 32.2717 38.4041 32.0912 37.5116C31.9106 36.619 31.4654 35.7992 30.812 35.156C29.9201 34.3258 28.7398 33.8633 27.513 33.8633C26.2862 33.8633 25.1058 34.3258 24.214 35.156Z" fill="#26B5E6"></path><path d="M56.452 40.0959C56.452 42.1713 55.9235 42.6921 53.8256 42.6921H53.0248C50.9189 42.6921 50.3984 42.1713 50.3984 40.0959V24.037C50.4465 16.5717 54.6984 12.8628 63.1701 12.8628C72.0662 12.8628 75.8537 16.5717 75.8537 24.037V40.0959C75.8537 42.1713 75.3252 42.6921 73.2193 42.6921H72.4186C70.3206 42.6921 69.7922 42.1713 69.7922 40.0959V24.037C69.7922 20.0913 68.3348 18.3946 63.1301 18.3946C57.9253 18.3946 56.4119 20.1149 56.4119 24.037L56.452 40.0959Z" fill="white"></path><path d="M97.2012 25.1261V22.3089C97.2012 18.9077 94.9271 17.9292 90.3069 17.9292C88.25 17.9045 86.1956 18.079 84.1733 18.45C82.4838 18.7341 82.0113 18.3948 82.0113 16.6035V15.7828C82.0113 14.1177 82.4838 13.5969 84.1172 13.3128C86.0496 13.0009 88.0045 12.8452 89.9626 12.8472C98.4263 12.8472 103.159 15.4356 103.159 22.3168V33.4752C103.159 39.8672 99.3632 42.6923 90.7153 42.6923C82.8281 42.6923 78.8564 39.7488 78.8564 33.8224C78.8564 27.6593 83.0683 25.1419 90.7793 25.1419H92.573C92.9595 25.1419 93.3302 25.2932 93.6035 25.5626C93.8768 25.8319 94.0303 26.1972 94.0303 26.5781V28.1564C94.0303 28.5499 93.8717 28.9272 93.5894 29.2055C93.3071 29.4837 92.9242 29.64 92.5249 29.64H90.7793C86.7757 29.64 84.8779 30.7921 84.8779 33.7277C84.8779 36.6633 87.096 37.6734 90.6032 37.6734C94.9832 37.6734 97.2012 36.8053 97.2012 33.1832V25.1261Z" fill="white"></path><path d="M117.01 34.7219C117.539 36.963 118.3 37.4839 119.933 37.4839C121.567 37.4839 122.335 37.0262 122.856 34.7219L127.412 16.0036C127.876 13.9913 128.517 13.4705 130.615 13.4705H131.488C133.594 13.4705 134.002 13.9913 133.473 16.0036L128.805 35.006C128.101 37.8311 127.204 39.8434 126.059 40.9403C124.914 42.0372 122.912 42.6132 119.933 42.6132C116.954 42.6132 114.904 42.1003 113.799 41.035C112.694 39.9696 111.75 37.9258 111.053 35.0454L106.377 16.043C105.848 14.0307 106.265 13.5099 108.363 13.5099H109.243C111.341 13.5099 111.982 14.0307 112.446 16.043L117.01 34.7219Z" fill="white"></path><path d="M140.096 13.4941H139.328C137.877 13.4941 136.701 14.653 136.701 16.0825V40.0407C136.701 41.4702 137.877 42.629 139.328 42.629H140.096C141.547 42.629 142.723 41.4702 142.723 40.0407V16.0825C142.723 14.653 141.547 13.4941 140.096 13.4941Z" fill="white"></path><path d="M145.733 38.1388C145.733 36.1265 146.206 35.6609 148.072 36.1265C150.853 36.8564 153.721 37.2226 156.599 37.2155C160.603 37.2155 162.036 36.5842 162.036 34.7455C162.036 33.3014 161.276 32.6149 158.297 31.2891L151.987 28.5271C147.983 26.8542 146.206 24.8971 146.206 20.691C146.206 15.3407 149.593 12.8628 157.36 12.8628C159.653 12.8486 161.937 13.1406 164.15 13.7308C166.192 14.3622 166.6 14.7094 166.6 16.6033V17.2977C166.6 19.31 166.072 19.7756 164.198 19.2548C161.937 18.627 159.597 18.3162 157.248 18.3315C153.452 18.3315 152.107 19.0259 152.107 20.6989C152.107 22.0878 152.804 22.7191 154.854 23.6424L161.628 26.5148C165.896 28.2983 167.882 30.3185 167.882 34.635C167.882 40.159 164.318 42.7 156.079 42.7C153.378 42.7109 150.688 42.3821 148.072 41.7215C146.142 41.2007 145.733 40.7982 145.733 38.8964V38.1388Z" fill="white"></path><path d="M198.189 16.4377C198.189 14.8594 198.598 14.3623 200.175 14.0703L203.274 13.4942V10.1562C203.274 2.84878 207.19 0.197288 213.796 0.197288C214.706 0.180066 215.616 0.275508 216.502 0.481377C218.544 0.891727 219.008 1.34943 219.008 3.25124V3.94568C219.055 4.28088 219.034 4.62196 218.944 4.94867C218.855 5.27537 218.7 5.58103 218.488 5.8475C217.839 6.36833 216.598 5.79226 214.204 5.79226C210.881 5.79226 209.24 7.11801 209.24 9.73794V13.4942H214.3C216.342 13.4942 216.75 13.8967 216.75 15.9169V16.5719C216.75 18.592 216.342 18.9945 214.3 18.9945H209.232V40.0644C209.232 42.1399 208.711 42.6607 206.605 42.6607H205.901C203.803 42.6607 203.274 42.1399 203.274 40.0644V19.0261H200.239C198.638 19.0261 198.189 18.6236 198.189 17.0059V16.4377Z" fill="white"></path><path d="M189.221 25.1261V22.3089C189.221 18.9077 186.947 17.9292 182.326 17.9292C180.27 17.9045 178.215 18.079 176.193 18.45C174.503 18.7341 174.031 18.3948 174.031 16.6035V15.7828C174.031 14.1177 174.503 13.5969 176.137 13.3128C178.069 13.0009 180.024 12.8452 181.982 12.8472C190.446 12.8472 195.178 15.4356 195.178 22.3168V33.4752C195.178 39.8672 191.383 42.6923 182.735 42.6923C174.848 42.6923 170.876 39.7488 170.876 33.8224C170.876 27.6593 175.088 25.1419 182.799 25.1419H184.593C184.979 25.1419 185.35 25.2932 185.623 25.5626C185.896 25.8319 186.05 26.1972 186.05 26.5781V28.1564C186.05 28.5499 185.891 28.9272 185.609 29.2055C185.327 29.4837 184.944 29.64 184.544 29.64H182.799C178.795 29.64 176.897 30.7921 176.897 33.7277C176.897 36.6633 179.116 37.6734 182.623 37.6734C187.003 37.6734 189.221 36.8053 189.221 33.1832V25.1261Z" fill="white"></path></g><defs><clipPath id="clip0_2032_4686"><rect width="219" height="43" fill="white"></rect></clipPath></defs></svg></div>
+    <div class="hero" style="margin:28px 0 18px">
+      <div class="bar"></div>
+      <h1 style="font-size:1.6rem">¿Qué vehículo conduces?</h1>
+      <p>Los datos de motor se leen de este vehículo. La posición en el mapa sale de tu celular.</p>
+    </div>
+    <div class="card">
+      <div class="search"><span class="icon">search</span><input id="vq" placeholder="Buscar placa o nombre" autocomplete="off"></div>
+      <div class="vlist" id="vlist"></div>
+      <button class="btn ghost sm" type="button" id="pickerBack"><span class="icon">arrow_back</span>Cerrar sesión</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APP ================= -->
+<section id="app" hidden>
+  <header class="appbar" id="appbar">
+    <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="219" height="43" viewBox="0 0 219 43" fill="none"><g clip-path="url(#clip0_2032_4686)"><path d="M41.558 2.27273C41.3119 2.02882 41.0016 1.85748 40.6621 1.778C40.3226 1.69853 39.9672 1.71409 39.6362 1.82293L2.05788 14.2045C1.68665 14.3267 1.36381 14.5608 1.13505 14.8738C0.906292 15.1868 0.783203 15.5627 0.783203 15.9485C0.783203 16.3342 0.906292 16.7101 1.13505 17.0231C1.36381 17.3361 1.68665 17.5703 2.05788 17.6924L19.8101 23.6741L25.7195 40.9798C25.8456 41.3447 26.0845 41.6616 26.4025 41.8859C26.7206 42.1103 27.102 42.231 27.4931 42.231C27.8843 42.231 28.2656 42.1103 28.5837 41.8859C28.9018 41.6616 29.1406 41.3447 29.2667 40.9798L41.9984 4.16666C42.1117 3.84194 42.1306 3.49241 42.0527 3.15768C41.9749 2.82295 41.8035 2.51639 41.558 2.27273ZM37.242 6.49461L27.5051 34.6589L23.0611 21.646C22.9663 21.3839 22.8127 21.1462 22.6116 20.9508C22.4106 20.7554 22.1673 20.6073 21.9 20.5175L8.47975 15.9485L37.242 6.49461Z" fill="white"></path><path d="M42.5833 1.30201C41.6914 0.471799 40.5111 0.00927734 39.2843 0.00927734C38.0575 0.00927734 36.8771 0.471799 35.9853 1.30201C35.3346 1.94473 34.8918 2.7631 34.7128 3.65373C34.5338 4.54436 34.6267 5.46728 34.9798 6.30589C35.3328 7.14451 35.9301 7.86119 36.6963 8.36539C37.4624 8.86959 38.363 9.13869 39.2843 9.13869C40.2055 9.13869 41.1061 8.86959 41.8723 8.36539C42.6384 7.86119 43.2358 7.14451 43.5888 6.30589C43.9418 5.46728 44.0347 4.54436 43.8558 3.65373C43.6768 2.7631 43.234 1.94473 42.5833 1.30201Z" fill="#26B5E6"></path><path d="M1.36144 12.626C0.708021 13.2692 0.262865 14.089 0.0822923 14.9816C-0.0982801 15.8741 -0.00615462 16.7995 0.347013 17.6404C0.700181 18.4814 1.29852 19.2003 2.06633 19.706C2.83414 20.2118 3.73692 20.4818 4.66045 20.4818C5.58398 20.4818 6.48676 20.2118 7.25457 19.706C8.02238 19.2003 8.62072 18.4814 8.97389 17.6404C9.32706 16.7995 9.41919 15.8741 9.23861 14.9816C9.05804 14.089 8.61288 13.2692 7.95947 12.626C7.08312 11.7663 5.89695 11.2837 4.66045 11.2837C3.42395 11.2837 2.23778 11.7663 1.36144 12.626Z" fill="#26B5E6"></path><path d="M24.4065 18.9392C23.5147 18.109 22.3343 17.6465 21.1075 17.6465C19.8807 17.6465 18.7004 18.109 17.8085 18.9392C17.1578 19.5819 16.715 20.4003 16.536 21.2909C16.3571 22.1816 16.45 23.1045 16.803 23.9431C17.156 24.7817 17.7534 25.4984 18.5195 26.0026C19.2857 26.5068 20.1863 26.7759 21.1075 26.7759C22.0288 26.7759 22.9294 26.5068 23.6955 26.0026C24.4617 25.4984 25.059 24.7817 25.412 23.9431C25.7651 23.1045 25.858 22.1816 25.679 21.2909C25.5 20.4003 25.0572 19.5819 24.4065 18.9392Z" fill="#26B5E6"></path><path d="M24.214 35.156C23.5606 35.7992 23.1154 36.619 22.9348 37.5116C22.7543 38.4041 22.8464 39.3295 23.1996 40.1704C23.5527 41.0114 24.1511 41.7303 24.9189 42.236C25.6867 42.7418 26.5895 43.0118 27.513 43.0118C28.4365 43.0118 29.3393 42.7418 30.1071 42.236C30.8749 41.7303 31.4733 41.0114 31.8264 40.1704C32.1796 39.3295 32.2717 38.4041 32.0912 37.5116C31.9106 36.619 31.4654 35.7992 30.812 35.156C29.9201 34.3258 28.7398 33.8633 27.513 33.8633C26.2862 33.8633 25.1058 34.3258 24.214 35.156Z" fill="#26B5E6"></path><path d="M56.452 40.0959C56.452 42.1713 55.9235 42.6921 53.8256 42.6921H53.0248C50.9189 42.6921 50.3984 42.1713 50.3984 40.0959V24.037C50.4465 16.5717 54.6984 12.8628 63.1701 12.8628C72.0662 12.8628 75.8537 16.5717 75.8537 24.037V40.0959C75.8537 42.1713 75.3252 42.6921 73.2193 42.6921H72.4186C70.3206 42.6921 69.7922 42.1713 69.7922 40.0959V24.037C69.7922 20.0913 68.3348 18.3946 63.1301 18.3946C57.9253 18.3946 56.4119 20.1149 56.4119 24.037L56.452 40.0959Z" fill="white"></path><path d="M97.2012 25.1261V22.3089C97.2012 18.9077 94.9271 17.9292 90.3069 17.9292C88.25 17.9045 86.1956 18.079 84.1733 18.45C82.4838 18.7341 82.0113 18.3948 82.0113 16.6035V15.7828C82.0113 14.1177 82.4838 13.5969 84.1172 13.3128C86.0496 13.0009 88.0045 12.8452 89.9626 12.8472C98.4263 12.8472 103.159 15.4356 103.159 22.3168V33.4752C103.159 39.8672 99.3632 42.6923 90.7153 42.6923C82.8281 42.6923 78.8564 39.7488 78.8564 33.8224C78.8564 27.6593 83.0683 25.1419 90.7793 25.1419H92.573C92.9595 25.1419 93.3302 25.2932 93.6035 25.5626C93.8768 25.8319 94.0303 26.1972 94.0303 26.5781V28.1564C94.0303 28.5499 93.8717 28.9272 93.5894 29.2055C93.3071 29.4837 92.9242 29.64 92.5249 29.64H90.7793C86.7757 29.64 84.8779 30.7921 84.8779 33.7277C84.8779 36.6633 87.096 37.6734 90.6032 37.6734C94.9832 37.6734 97.2012 36.8053 97.2012 33.1832V25.1261Z" fill="white"></path><path d="M117.01 34.7219C117.539 36.963 118.3 37.4839 119.933 37.4839C121.567 37.4839 122.335 37.0262 122.856 34.7219L127.412 16.0036C127.876 13.9913 128.517 13.4705 130.615 13.4705H131.488C133.594 13.4705 134.002 13.9913 133.473 16.0036L128.805 35.006C128.101 37.8311 127.204 39.8434 126.059 40.9403C124.914 42.0372 122.912 42.6132 119.933 42.6132C116.954 42.6132 114.904 42.1003 113.799 41.035C112.694 39.9696 111.75 37.9258 111.053 35.0454L106.377 16.043C105.848 14.0307 106.265 13.5099 108.363 13.5099H109.243C111.341 13.5099 111.982 14.0307 112.446 16.043L117.01 34.7219Z" fill="white"></path><path d="M140.096 13.4941H139.328C137.877 13.4941 136.701 14.653 136.701 16.0825V40.0407C136.701 41.4702 137.877 42.629 139.328 42.629H140.096C141.547 42.629 142.723 41.4702 142.723 40.0407V16.0825C142.723 14.653 141.547 13.4941 140.096 13.4941Z" fill="white"></path><path d="M145.733 38.1388C145.733 36.1265 146.206 35.6609 148.072 36.1265C150.853 36.8564 153.721 37.2226 156.599 37.2155C160.603 37.2155 162.036 36.5842 162.036 34.7455C162.036 33.3014 161.276 32.6149 158.297 31.2891L151.987 28.5271C147.983 26.8542 146.206 24.8971 146.206 20.691C146.206 15.3407 149.593 12.8628 157.36 12.8628C159.653 12.8486 161.937 13.1406 164.15 13.7308C166.192 14.3622 166.6 14.7094 166.6 16.6033V17.2977C166.6 19.31 166.072 19.7756 164.198 19.2548C161.937 18.627 159.597 18.3162 157.248 18.3315C153.452 18.3315 152.107 19.0259 152.107 20.6989C152.107 22.0878 152.804 22.7191 154.854 23.6424L161.628 26.5148C165.896 28.2983 167.882 30.3185 167.882 34.635C167.882 40.159 164.318 42.7 156.079 42.7C153.378 42.7109 150.688 42.3821 148.072 41.7215C146.142 41.2007 145.733 40.7982 145.733 38.8964V38.1388Z" fill="white"></path><path d="M198.189 16.4377C198.189 14.8594 198.598 14.3623 200.175 14.0703L203.274 13.4942V10.1562C203.274 2.84878 207.19 0.197288 213.796 0.197288C214.706 0.180066 215.616 0.275508 216.502 0.481377C218.544 0.891727 219.008 1.34943 219.008 3.25124V3.94568C219.055 4.28088 219.034 4.62196 218.944 4.94867C218.855 5.27537 218.7 5.58103 218.488 5.8475C217.839 6.36833 216.598 5.79226 214.204 5.79226C210.881 5.79226 209.24 7.11801 209.24 9.73794V13.4942H214.3C216.342 13.4942 216.75 13.8967 216.75 15.9169V16.5719C216.75 18.592 216.342 18.9945 214.3 18.9945H209.232V40.0644C209.232 42.1399 208.711 42.6607 206.605 42.6607H205.901C203.803 42.6607 203.274 42.1399 203.274 40.0644V19.0261H200.239C198.638 19.0261 198.189 18.6236 198.189 17.0059V16.4377Z" fill="white"></path><path d="M189.221 25.1261V22.3089C189.221 18.9077 186.947 17.9292 182.326 17.9292C180.27 17.9045 178.215 18.079 176.193 18.45C174.503 18.7341 174.031 18.3948 174.031 16.6035V15.7828C174.031 14.1177 174.503 13.5969 176.137 13.3128C178.069 13.0009 180.024 12.8452 181.982 12.8472C190.446 12.8472 195.178 15.4356 195.178 22.3168V33.4752C195.178 39.8672 191.383 42.6923 182.735 42.6923C174.848 42.6923 170.876 39.7488 170.876 33.8224C170.876 27.6593 175.088 25.1419 182.799 25.1419H184.593C184.979 25.1419 185.35 25.2932 185.623 25.5626C185.896 25.8319 186.05 26.1972 186.05 26.5781V28.1564C186.05 28.5499 185.891 28.9272 185.609 29.2055C185.327 29.4837 184.944 29.64 184.544 29.64H182.799C178.795 29.64 176.897 30.7921 176.897 33.7277C176.897 36.6633 179.116 37.6734 182.623 37.6734C187.003 37.6734 189.221 36.8053 189.221 33.1832V25.1261Z" fill="white"></path></g><defs><clipPath id="clip0_2032_4686"><rect width="219" height="43" fill="white"></rect></clipPath></defs></svg></div>
+    <div class="meta" id="meta"><b id="metaVeh">—</b><span><i></i><em id="metaTxt" style="font-style:normal">Conectando…</em></span></div>
+    <button class="ibtn" id="cfgBtn" aria-label="Personalizar datos"><span class="icon">tune</span></button>
+    <button class="ibtn" id="exitBtn" aria-label="Salir"><span class="icon">logout</span></button>
+  </header>
+
+  <div id="map"></div>
+
+  <div class="fabs">
+    <button class="ibtn fab" id="btnLayer" aria-pressed="false" aria-label="Vista satélite"><span class="icon">satellite_alt</span></button>
+    <button class="ibtn fab" id="btnCenter" aria-pressed="true" aria-label="Seguir mi posición"><span class="icon">my_location</span></button>
+  </div>
+
+  <aside class="sheet" id="sheet">
+    <button class="handle" id="handle" aria-label="Expandir o contraer"><span></span></button>
+    <div class="sh-head">
+      <h2 id="shTitle">Telemetría</h2>
+      <span class="gpschip" id="gpsChip">GPS —</span>
+      <span class="pill off" id="engPill">Motor —</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </aside>
+
+  <div class="start" id="start" hidden>
+    <div class="start-card">
+      <span class="icon big">speed</span>
+      <h2>Iniciar recorrido</h2>
+      <p id="startTxt">Activa el GPS de este celular para ver tu posición mientras ves la telemetría del vehículo.</p>
+      <button class="btn primary" id="startBtn"><span class="icon">play_arrow</span>Iniciar</button>
+    </div>
+  </div>
+
+  <!-- Personalización -->
+  <div class="modal" id="cfg" hidden>
+    <div class="panel">
+      <div class="panel-head"><h2>Personalizar datos</h2><button class="ibtn" id="cfgClose" aria-label="Cerrar"><span class="icon">close</span></button></div>
+      <div class="panel-body">
+        <div class="sec" style="display:flex;gap:18px;flex-wrap:wrap">
+          <div><h3>Actualizar cada</h3>
+          <div class="seg" id="ivSeg"><button data-s="5">5 s</button><button data-s="10">10 s</button><button data-s="30">30 s</button></div></div>
+          <div><h3>Gráficos muestran</h3>
+          <div class="seg" id="chSeg"><button data-m="5">5 min</button><button data-m="10">10 min</button><button data-m="30">30 min</button></div></div>
+        </div>
+        <div class="sec">
+          <h3 id="dataTitle">Datos del vehículo</h3>
+          <p class="hint">Activa los que quieres ver y elige cómo verlos: valor, gráfico, barra o tablero (reloj de aguja). Ordénalos con las flechas. Con mínimo o máximo, el dato se pone en rojo y el celular vibra.</p>
+          <div class="search" style="margin-bottom:6px"><span class="icon">search</span><input id="avQ" placeholder="Filtrar datos" autocomplete="off"></div>
+          <div id="selList"></div>
+        </div>
+        <div class="sec" id="secSearch">
+          <h3>Buscar otro dato</h3>
+          <p class="hint">Busca cualquier diagnóstico de MyGeotab por nombre (por ejemplo "aceite", "combustible", "presión").</p>
+          <div style="display:flex;gap:8px"><div class="search" style="flex:1"><span class="icon">search</span><input id="dgQ" placeholder="Nombre del dato" autocomplete="off"></div>
+            <button class="btn primary sm" id="dgBtn">Buscar</button></div>
+          <div id="dgList" style="margin-top:6px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- Modo pantalla del vehículo (se activa en horizontal) -->
+  <div id="carView" hidden>
+    <svg class="car-bg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="cSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0D2B4F"/><stop offset=".55" stop-color="#081E3A"/><stop offset="1" stop-color="#050F1F"/></linearGradient>
+        <radialGradient id="cGlow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#26B5E6" stop-opacity=".35"/><stop offset="1" stop-color="#26B5E6" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="1280" height="720" fill="url(#cSky)"/>
+      <g fill="#fff" fill-opacity=".55"><circle cx="420" cy="60" r="1.2"/><circle cx="560" cy="110" r="1"/><circle cx="700" cy="70" r="1.4"/><circle cx="820" cy="120" r="1"/><circle cx="880" cy="50" r="1.2"/><circle cx="640" cy="40" r="1"/></g>
+      <path d="M0 360 L120 270 L230 330 L360 230 L470 310 L560 250 L660 320 L780 240 L900 315 L1010 255 L1130 320 L1280 260 L1280 720 L0 720 Z" fill="#0B2746"/>
+      <path d="M0 420 L150 340 L290 400 L420 330 L560 395 L700 340 L840 400 L980 345 L1120 405 L1280 350 L1280 720 L0 720 Z" fill="#0A2240"/>
+      <path d="M520 720 L620 420 L660 420 L760 720 Z" fill="#0B1E36"/>
+      <path d="M640 430 V470 M640 500 V550 M640 585 V650 M640 685 V720" stroke="#26B5E6" stroke-opacity=".5" stroke-width="3"/>
+      <ellipse cx="640" cy="300" rx="330" ry="170" fill="url(#cGlow)"/>
+    </svg>
+    <header class="car-top">
+      <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="219" height="43" viewBox="0 0 219 43" fill="none"><g clip-path="url(#clip0_2032_4686)"><path d="M41.558 2.27273C41.3119 2.02882 41.0016 1.85748 40.6621 1.778C40.3226 1.69853 39.9672 1.71409 39.6362 1.82293L2.05788 14.2045C1.68665 14.3267 1.36381 14.5608 1.13505 14.8738C0.906292 15.1868 0.783203 15.5627 0.783203 15.9485C0.783203 16.3342 0.906292 16.7101 1.13505 17.0231C1.36381 17.3361 1.68665 17.5703 2.05788 17.6924L19.8101 23.6741L25.7195 40.9798C25.8456 41.3447 26.0845 41.6616 26.4025 41.8859C26.7206 42.1103 27.102 42.231 27.4931 42.231C27.8843 42.231 28.2656 42.1103 28.5837 41.8859C28.9018 41.6616 29.1406 41.3447 29.2667 40.9798L41.9984 4.16666C42.1117 3.84194 42.1306 3.49241 42.0527 3.15768C41.9749 2.82295 41.8035 2.51639 41.558 2.27273ZM37.242 6.49461L27.5051 34.6589L23.0611 21.646C22.9663 21.3839 22.8127 21.1462 22.6116 20.9508C22.4106 20.7554 22.1673 20.6073 21.9 20.5175L8.47975 15.9485L37.242 6.49461Z" fill="white"></path><path d="M42.5833 1.30201C41.6914 0.471799 40.5111 0.00927734 39.2843 0.00927734C38.0575 0.00927734 36.8771 0.471799 35.9853 1.30201C35.3346 1.94473 34.8918 2.7631 34.7128 3.65373C34.5338 4.54436 34.6267 5.46728 34.9798 6.30589C35.3328 7.14451 35.9301 7.86119 36.6963 8.36539C37.4624 8.86959 38.363 9.13869 39.2843 9.13869C40.2055 9.13869 41.1061 8.86959 41.8723 8.36539C42.6384 7.86119 43.2358 7.14451 43.5888 6.30589C43.9418 5.46728 44.0347 4.54436 43.8558 3.65373C43.6768 2.7631 43.234 1.94473 42.5833 1.30201Z" fill="#26B5E6"></path><path d="M1.36144 12.626C0.708021 13.2692 0.262865 14.089 0.0822923 14.9816C-0.0982801 15.8741 -0.00615462 16.7995 0.347013 17.6404C0.700181 18.4814 1.29852 19.2003 2.06633 19.706C2.83414 20.2118 3.73692 20.4818 4.66045 20.4818C5.58398 20.4818 6.48676 20.2118 7.25457 19.706C8.02238 19.2003 8.62072 18.4814 8.97389 17.6404C9.32706 16.7995 9.41919 15.8741 9.23861 14.9816C9.05804 14.089 8.61288 13.2692 7.95947 12.626C7.08312 11.7663 5.89695 11.2837 4.66045 11.2837C3.42395 11.2837 2.23778 11.7663 1.36144 12.626Z" fill="#26B5E6"></path><path d="M24.4065 18.9392C23.5147 18.109 22.3343 17.6465 21.1075 17.6465C19.8807 17.6465 18.7004 18.109 17.8085 18.9392C17.1578 19.5819 16.715 20.4003 16.536 21.2909C16.3571 22.1816 16.45 23.1045 16.803 23.9431C17.156 24.7817 17.7534 25.4984 18.5195 26.0026C19.2857 26.5068 20.1863 26.7759 21.1075 26.7759C22.0288 26.7759 22.9294 26.5068 23.6955 26.0026C24.4617 25.4984 25.059 24.7817 25.412 23.9431C25.7651 23.1045 25.858 22.1816 25.679 21.2909C25.5 20.4003 25.0572 19.5819 24.4065 18.9392Z" fill="#26B5E6"></path><path d="M24.214 35.156C23.5606 35.7992 23.1154 36.619 22.9348 37.5116C22.7543 38.4041 22.8464 39.3295 23.1996 40.1704C23.5527 41.0114 24.1511 41.7303 24.9189 42.236C25.6867 42.7418 26.5895 43.0118 27.513 43.0118C28.4365 43.0118 29.3393 42.7418 30.1071 42.236C30.8749 41.7303 31.4733 41.0114 31.8264 40.1704C32.1796 39.3295 32.2717 38.4041 32.0912 37.5116C31.9106 36.619 31.4654 35.7992 30.812 35.156C29.9201 34.3258 28.7398 33.8633 27.513 33.8633C26.2862 33.8633 25.1058 34.3258 24.214 35.156Z" fill="#26B5E6"></path><path d="M56.452 40.0959C56.452 42.1713 55.9235 42.6921 53.8256 42.6921H53.0248C50.9189 42.6921 50.3984 42.1713 50.3984 40.0959V24.037C50.4465 16.5717 54.6984 12.8628 63.1701 12.8628C72.0662 12.8628 75.8537 16.5717 75.8537 24.037V40.0959C75.8537 42.1713 75.3252 42.6921 73.2193 42.6921H72.4186C70.3206 42.6921 69.7922 42.1713 69.7922 40.0959V24.037C69.7922 20.0913 68.3348 18.3946 63.1301 18.3946C57.9253 18.3946 56.4119 20.1149 56.4119 24.037L56.452 40.0959Z" fill="white"></path><path d="M97.2012 25.1261V22.3089C97.2012 18.9077 94.9271 17.9292 90.3069 17.9292C88.25 17.9045 86.1956 18.079 84.1733 18.45C82.4838 18.7341 82.0113 18.3948 82.0113 16.6035V15.7828C82.0113 14.1177 82.4838 13.5969 84.1172 13.3128C86.0496 13.0009 88.0045 12.8452 89.9626 12.8472C98.4263 12.8472 103.159 15.4356 103.159 22.3168V33.4752C103.159 39.8672 99.3632 42.6923 90.7153 42.6923C82.8281 42.6923 78.8564 39.7488 78.8564 33.8224C78.8564 27.6593 83.0683 25.1419 90.7793 25.1419H92.573C92.9595 25.1419 93.3302 25.2932 93.6035 25.5626C93.8768 25.8319 94.0303 26.1972 94.0303 26.5781V28.1564C94.0303 28.5499 93.8717 28.9272 93.5894 29.2055C93.3071 29.4837 92.9242 29.64 92.5249 29.64H90.7793C86.7757 29.64 84.8779 30.7921 84.8779 33.7277C84.8779 36.6633 87.096 37.6734 90.6032 37.6734C94.9832 37.6734 97.2012 36.8053 97.2012 33.1832V25.1261Z" fill="white"></path><path d="M117.01 34.7219C117.539 36.963 118.3 37.4839 119.933 37.4839C121.567 37.4839 122.335 37.0262 122.856 34.7219L127.412 16.0036C127.876 13.9913 128.517 13.4705 130.615 13.4705H131.488C133.594 13.4705 134.002 13.9913 133.473 16.0036L128.805 35.006C128.101 37.8311 127.204 39.8434 126.059 40.9403C124.914 42.0372 122.912 42.6132 119.933 42.6132C116.954 42.6132 114.904 42.1003 113.799 41.035C112.694 39.9696 111.75 37.9258 111.053 35.0454L106.377 16.043C105.848 14.0307 106.265 13.5099 108.363 13.5099H109.243C111.341 13.5099 111.982 14.0307 112.446 16.043L117.01 34.7219Z" fill="white"></path><path d="M140.096 13.4941H139.328C137.877 13.4941 136.701 14.653 136.701 16.0825V40.0407C136.701 41.4702 137.877 42.629 139.328 42.629H140.096C141.547 42.629 142.723 41.4702 142.723 40.0407V16.0825C142.723 14.653 141.547 13.4941 140.096 13.4941Z" fill="white"></path><path d="M145.733 38.1388C145.733 36.1265 146.206 35.6609 148.072 36.1265C150.853 36.8564 153.721 37.2226 156.599 37.2155C160.603 37.2155 162.036 36.5842 162.036 34.7455C162.036 33.3014 161.276 32.6149 158.297 31.2891L151.987 28.5271C147.983 26.8542 146.206 24.8971 146.206 20.691C146.206 15.3407 149.593 12.8628 157.36 12.8628C159.653 12.8486 161.937 13.1406 164.15 13.7308C166.192 14.3622 166.6 14.7094 166.6 16.6033V17.2977C166.6 19.31 166.072 19.7756 164.198 19.2548C161.937 18.627 159.597 18.3162 157.248 18.3315C153.452 18.3315 152.107 19.0259 152.107 20.6989C152.107 22.0878 152.804 22.7191 154.854 23.6424L161.628 26.5148C165.896 28.2983 167.882 30.3185 167.882 34.635C167.882 40.159 164.318 42.7 156.079 42.7C153.378 42.7109 150.688 42.3821 148.072 41.7215C146.142 41.2007 145.733 40.7982 145.733 38.8964V38.1388Z" fill="white"></path><path d="M198.189 16.4377C198.189 14.8594 198.598 14.3623 200.175 14.0703L203.274 13.4942V10.1562C203.274 2.84878 207.19 0.197288 213.796 0.197288C214.706 0.180066 215.616 0.275508 216.502 0.481377C218.544 0.891727 219.008 1.34943 219.008 3.25124V3.94568C219.055 4.28088 219.034 4.62196 218.944 4.94867C218.855 5.27537 218.7 5.58103 218.488 5.8475C217.839 6.36833 216.598 5.79226 214.204 5.79226C210.881 5.79226 209.24 7.11801 209.24 9.73794V13.4942H214.3C216.342 13.4942 216.75 13.8967 216.75 15.9169V16.5719C216.75 18.592 216.342 18.9945 214.3 18.9945H209.232V40.0644C209.232 42.1399 208.711 42.6607 206.605 42.6607H205.901C203.803 42.6607 203.274 42.1399 203.274 40.0644V19.0261H200.239C198.638 19.0261 198.189 18.6236 198.189 17.0059V16.4377Z" fill="white"></path><path d="M189.221 25.1261V22.3089C189.221 18.9077 186.947 17.9292 182.326 17.9292C180.27 17.9045 178.215 18.079 176.193 18.45C174.503 18.7341 174.031 18.3948 174.031 16.6035V15.7828C174.031 14.1177 174.503 13.5969 176.137 13.3128C178.069 13.0009 180.024 12.8452 181.982 12.8472C190.446 12.8472 195.178 15.4356 195.178 22.3168V33.4752C195.178 39.8672 191.383 42.6923 182.735 42.6923C174.848 42.6923 170.876 39.7488 170.876 33.8224C170.876 27.6593 175.088 25.1419 182.799 25.1419H184.593C184.979 25.1419 185.35 25.2932 185.623 25.5626C185.896 25.8319 186.05 26.1972 186.05 26.5781V28.1564C186.05 28.5499 185.891 28.9272 185.609 29.2055C185.327 29.4837 184.944 29.64 184.544 29.64H182.799C178.795 29.64 176.897 30.7921 176.897 33.7277C176.897 36.6633 179.116 37.6734 182.623 37.6734C187.003 37.6734 189.221 36.8053 189.221 33.1832V25.1261Z" fill="white"></path></g><defs><clipPath id="clip0_2032_4686"><rect width="219" height="43" fill="white"></rect></clipPath></defs></svg></div>
+      <div class="car-name" id="carName">—</div>
+      <div class="car-stat"><span><i id="carDot"></i><span id="carGps">GPS —</span></span><span id="carStatus">Conectando…</span><b id="carClock"></b></div>
+    </header>
+    <aside class="glass car-left">
+      <div><div class="c-hi" id="carHello">Hola,</div><div class="c-name" id="carUser">—</div><div class="c-sub" id="carSub">—</div></div>
+      <div class="c-clock"><b id="carTime">—</b><span id="carDate"></span></div>
+      <div class="c-trip-h"><span>VIAJE ACTUAL</span><span class="c-chip">GPS del celular</span></div>
+      <div class="c-trip">
+        <div class="km"><span id="tripKm">0,0</span><small>km</small></div>
+        <svg class="c-compass" viewBox="0 0 86 86" role="img" aria-label="Rumbo">
+          <circle cx="43" cy="43" r="38" fill="rgba(255,255,255,.04)" stroke="#9DB8D6" stroke-opacity=".5" stroke-width="2"/>
+          <path d="M43 8 V14 M43 72 V78 M8 43 H14 M72 43 H78" stroke="#9DB8D6" stroke-width="1.5"/>
+          <text x="43" y="25" text-anchor="middle" font-size="10" font-weight="700" fill="#E5574F">N</text>
+          <g class="ndl" id="carNeedle"><path d="M43 26 L50 46 L43 41 L36 46 Z" fill="#26B5E6"/></g>
+          <text x="43" y="64" text-anchor="middle" font-size="9" fill="#C9DDF0" id="carDir">—</text>
+        </svg>
+      </div>
+      <div class="c-stats"><div>Tiempo<b id="tripTime">0 min</b></div><div>Promedio<b id="tripAvg">— km/h</b></div><div>Máxima<b id="tripMax">0 km/h</b></div></div>
+      <div class="c-mini" id="miniMap"><button class="c-mini-btn" id="miniBtn">Ampliar mapa</button></div>
+    </aside>
+    <main class="car-center">
+      <div class="c-hero">
+        <img id="carImg" alt="" hidden>
+        <svg class="sil" id="carSil" viewBox="0 0 460 230" aria-hidden="true">
+          <ellipse cx="230" cy="196" rx="205" ry="13" fill="#000" fill-opacity=".5"/>
+          <path d="M30 168 L30 132 Q32 112 62 107 L122 100 L166 60 Q174 52 188 51 L322 51 Q340 52 352 64 L390 101 L420 108 Q442 112 444 134 L444 168 Q442 178 430 178 L402 178 A42 42 0 0 0 318 178 L152 178 A42 42 0 0 0 68 178 L42 178 Q30 178 30 168 Z" fill="#EEF2F6"/>
+          <path d="M178 62 L246 62 L246 100 L140 100 Z M254 62 L322 62 Q334 63 342 72 L370 100 L254 100 Z" fill="#1B2A3C"/>
+          <circle cx="110" cy="178" r="36" fill="#0E141C"/><circle cx="110" cy="178" r="22" fill="#8A97A6"/>
+          <circle cx="360" cy="178" r="36" fill="#0E141C"/><circle cx="360" cy="178" r="22" fill="#8A97A6"/>
+        </svg>
+        <button class="c-photo" id="photoBtn"><span class="icon">photo_camera</span><span id="photoTxt">Poner foto del vehículo</span></button>
+        <input type="file" id="photoIn" accept="image/*" hidden>
+      </div>
+      <div class="car-gauges" id="carGauges"></div>
+    </main>
+    <aside class="glass car-right">
+      <div class="c-rh"><b>Telemetría</b><span id="carEvery"></span></div>
+      <div class="car-cards" id="carCards"></div>
+    </aside>
+    <nav class="glass car-dock" aria-label="Menú">
+      <button class="on" id="dockDash"><span class="icon">speed</span>Tablero</button>
+      <button id="dockMap"><span class="icon">map</span>Mapa</button>
+      <button id="dockAlert"><span class="icon">notifications</span>Alertas<span class="badge" id="alertBadge" hidden>0</span></button>
+      <button id="dockCfg"><span class="icon">tune</span>Personalizar</button>
+      <button id="dockExit"><span class="icon">logout</span>Salir</button>
+    </nav>
+  </div>
+</section>
+<div class="loading" id="loading" hidden><div><div class="spinner"></div><p id="loadingTxt" style="margin-top:14px">Cargando…</p></div></div>
+
+<script>
+(function(){
+'use strict';
+/* =====================================================
+   CONFIGURACIÓN
+   ===================================================== */
+// Datos de motor conocidos: nombre corto y orden preferido. La app también detecta
+// cualquier otro dato que el vehículo reporte.
+const KNOWN=[
+  {id:'aW3Nmy-ktfEuvrdkya4z0yg',label:'RPM (alta resolución)',max:6000},
+  {id:'DiagnosticEngineSpeedId',label:'RPM',max:6000},
+  {id:'DiagnosticEngineRoadSpeedId',label:'Velocidad (motor)'},
+  {id:'DiagnosticEngineCoolantTemperatureId',label:'Temp. refrigerante',max:105},
+  {id:'DiagnosticFuelLevelId',label:'Nivel de combustible',min:15},
+  {id:'DiagnosticGoDeviceVoltageId',label:'Voltaje batería'},
+  {id:'DiagnosticEngineOilPressureId',label:'Presión de aceite'},
+  {id:'DiagnosticEngineOilTemperatureId',label:'Temp. aceite'},
+  {id:'DiagnosticOdometerId',label:'Odómetro'},
+  {id:'DiagnosticIgnitionId',label:'Encendido'},
+  {id:'DiagnosticParkingBrakeId',label:'Freno de mano'},
+  {id:'DiagnosticDriverSeatbeltId',label:'Cinturón conductor'},
+  {id:'DiagnosticTotalTripFuelUsedId',label:'Combustible del viaje'},
+  {id:'DiagnosticDeviceTotalFuelId',label:'Combustible total usado'},
+  {id:'DiagnosticDeviceTotalIdleFuelId',label:'Combustible en ralentí (total)'},
+  {id:'DiagnosticOdometerAdjustmentId',label:'Odómetro'},
+  {id:'DiagnosticEngineHoursId',label:'Horas de motor'},
+  {id:'DiagnosticEngineHoursAdjustmentId',label:'Horas de motor'},
+  {id:'DiagnosticOutsideTemperatureId',label:'Temp. exterior'},
+  {id:'DiagnosticCrankingVoltageId',label:'Voltaje de arranque'},
+  {id:'DiagnosticPredictedRiskOfBreakdownId',label:'Riesgo de varada'}
+];
+const KNOWN_MAP=Object.fromEntries(KNOWN.map(k=>[k.id,k]));
+const DEFAULT_COUNT=6;          // datos que se muestran la primera vez
+const STALE_MS=5*60000;         // un dato sin actualizar en 5 min se ve atenuado
+// Diagnósticos internos del equipo que no aportan al conductor
+const NOISE=/(detect|protocol|harness|arn[eé]s|posici[oó]n v[aá]lida|position valid|camera device status|vehicle active|veh[ií]culo activo)/i;
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const R=Math.PI/180;
+function hav(a,b){const dLat=(b.lat-a.lat)*R,dLng=(b.lng-a.lng)*R,x=Math.sin(dLat/2)**2+Math.cos(a.lat*R)*Math.cos(b.lat*R)*Math.sin(dLng/2)**2;return 12742000*Math.asin(Math.sqrt(x));}
+function bearingTo(a,b){const y=Math.sin((b.lng-a.lng)*R)*Math.cos(b.lat*R),x=Math.cos(a.lat*R)*Math.sin(b.lat*R)-Math.sin(a.lat*R)*Math.cos(b.lat*R)*Math.cos((b.lng-a.lng)*R);return (Math.atan2(y,x)/R+360)%360;}
+function ago(t){if(!t)return '';const s=Math.max(0,Math.round((Date.now()-t)/1000));if(s<60)return s+' s';const m=Math.round(s/60);if(m<60)return m+' min';const h=Math.round(m/60);return h<48?h+' h':Math.round(h/24)+' d';}
+
+/* ---------- Unidades: MyGeotab entrega SI; aquí se convierten para leer fácil ---------- */
+function unitOf(uom){
+  const u=String(uom&&uom.id||uom||'');
+  const T={
+    UnitOfMeasureRevolutionsPerMinuteId:{u:'rpm',d:0},
+    UnitOfMeasureDegreesCelsiusId:{u:'°C',d:0},
+    UnitOfMeasureKilometersPerHourId:{u:'km/h',d:0},
+    UnitOfMeasureVoltsId:{u:'V',d:1},
+    UnitOfMeasurePercentageId:{u:'%',d:0},
+    UnitOfMeasureKiloPascalsId:{u:'kPa',d:0},
+    UnitOfMeasureMetersId:{u:'km',d:0,f:v=>v/1000},
+    UnitOfMeasureSecondsId:{u:'h',d:1,f:v=>v/3600},
+    UnitOfMeasureLitersId:{u:'L',d:1},
+    UnitOfMeasureLitersPerHourId:{u:'L/h',d:1},
+    UnitOfMeasureKilometersPerLiterId:{u:'km/L',d:1},
+    UnitOfMeasureAmperesId:{u:'A',d:1},
+    UnitOfMeasureKilogramsId:{u:'kg',d:0},
+    UnitOfMeasureNewtonMetersId:{u:'N·m',d:0},
+    UnitOfMeasureMetersPerSecondSquaredId:{u:'m/s²',d:2}
+  };
+  if(T[u])return T[u];
+  const raw=u.replace(/^UnitOfMeasure/,'').replace(/Id$/,'');
+  return {u:raw==='None'?'':raw,d:2};
+}
+function fmtVal(m,v){
+  if(v==null||isNaN(v))return '—';
+  if(m.id==='DiagnosticIgnitionId')return v>=1?'Sí':'No';
+  if(m.id==='DiagnosticParkingBrakeId')return v>=1?'Puesto':'Libre';
+  if(m.id==='DiagnosticDriverSeatbeltId'&&v<0)return 'N/D';
+  const x=m.f?m.f(v):v;
+  return x.toLocaleString('es-CO',{minimumFractionDigits:0,maximumFractionDigits:m.d});
+}
+
+/* =====================================================
+   1. CONEXIÓN A MYGEOTAB
+   ===================================================== */
+const Geo={
+  server:'my.geotab.com',creds:null,login:null,
+  async rpc(method,params){
+    let r;
+    try{r=await fetch('https://'+this.server+'/apiv1',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:'JSON-RPC='+encodeURIComponent(JSON.stringify({method,params}))});}
+    catch(e){const err=new Error('Sin conexión con MyGeotab. Revisa los datos móviles.');err.code='Network';throw err;}
+    const j=await r.json();
+    if(j.error){const inner=(j.error.errors&&j.error.errors[0])||{};const e=new Error(inner.message||j.error.message||'Error de MyGeotab');e.code=inner.name||j.error.name||'';throw e;}
+    return j.result;
+  },
+  async authenticate(server,database,userName,password){
+    this.server=server||'my.geotab.com';
+    const res=await this.rpc('Authenticate',{database,userName,password});
+    if(res.path&&res.path!=='ThisServer')this.server=res.path;
+    this.creds=res.credentials;this.login={server,database,userName,password};
+  },
+  async call(method,params){
+    try{return await this.rpc(method,Object.assign({},params,{credentials:this.creds}));}
+    catch(e){
+      if(/InvalidUser|DbUnavailable/i.test(e.code||'')&&this.login){const l=this.login;await this.authenticate(l.server,l.database,l.userName,l.password);
+        return this.rpc(method,Object.assign({},params,{credentials:this.creds}));}
+      throw e;
+    }
+  }
+};
+function friendly(e){
+  const c=(e&&e.code)||'';
+  if(/InvalidUser/i.test(c))return 'Usuario o contraseña incorrectos.';
+  if(/DbUnavailable/i.test(c))return 'No se encontró esa base de datos. Revisa el nombre.';
+  if(/OverLimit/i.test(c))return 'MyGeotab limitó las consultas un momento. Reintentando…';
+  return (e&&e.message)||'Ocurrió un error inesperado.';
+}
+function describe(d){
+  const k=KNOWN_MAP[d.id],un=unitOf(d.unitOfMeasure);
+  return {id:d.id,name:(k&&k.label)||d.name||d.id,full:d.name||'',u:un.u,d:un.d,f:un.f,defMin:k&&k.min,defMax:k&&k.max,known:!!k};
+}
+
+const Real={
+  async devices(){
+    const list=await Geo.call('Get',{typeName:'Device',search:{fromDate:new Date().toISOString()},resultsLimit:5000});
+    return list.map(d=>({id:d.id,name:d.name||d.id,plate:d.licensePlate||''})).sort((a,b)=>a.name.localeCompare(b.name,'es',{numeric:true}));
+  },
+  // Descubre qué datos reporta el vehículo: muestra de los últimos 15 min + datos conocidos de los últimos 7 días
+  async discover(devId){
+    const now=Date.now(),ids=new Set();
+    try{
+      const sample=await Geo.call('Get',{typeName:'StatusData',resultsLimit:4000,
+        search:{deviceSearch:{id:devId},fromDate:new Date(now-15*60000).toISOString(),toDate:new Date(now).toISOString()}});
+      sample.forEach(s=>s.diagnostic&&s.diagnostic.id&&ids.add(s.diagnostic.id));
+    }catch(e){}
+    const checks=await Promise.allSettled(KNOWN.filter(k=>!ids.has(k.id)).map(k=>Geo.call('Get',{typeName:'StatusData',resultsLimit:1,
+      search:{deviceSearch:{id:devId},diagnosticSearch:{id:k.id},fromDate:new Date(now-7*86400000).toISOString(),toDate:new Date(now).toISOString()}}).then(r=>r.length?k.id:null)));
+    checks.forEach(c=>{if(c.status==='fulfilled'&&c.value)ids.add(c.value);});
+    const list=[...ids];
+    const diags=await Promise.allSettled(list.map(id=>Geo.call('Get',{typeName:'Diagnostic',search:{id},resultsLimit:1})));
+    return list.map((id,i)=>diags[i].status==='fulfilled'&&diags[i].value[0]?describe(diags[i].value[0]):null)
+      .filter(m=>m&&(m.known||!NOISE.test(m.full)));
+  },
+  async searchDiag(q){
+    const list=await Geo.call('Get',{typeName:'Diagnostic',search:{name:'%'+q+'%'},resultsLimit:30});
+    return list.map(describe);
+  },
+  // Trae los registros nuevos desde la última lectura de cada dato (con su hora real)
+  async poll(devId,ids,since){
+    const now=new Date();
+    const calls=ids.map(id=>({method:'Get',params:{typeName:'StatusData',resultsLimit:1000,
+      search:{deviceSearch:{id:devId},diagnosticSearch:{id},fromDate:new Date(since[id]||now-Math.max(5,(S.cfg&&S.cfg.chartMin)||10)*60000).toISOString(),toDate:now.toISOString()}}}));
+    const res=await Geo.call('ExecuteMultiCall',{calls});
+    const out={};ids.forEach((id,i)=>{out[id]=(res[i]||[]).map(r=>({v:r.data,t:new Date(r.dateTime).getTime()})).sort((a,b)=>a.t-b.t);});
+    return out;
+  },
+  // Último valor conocido: el registro más reciente de las últimas 24 h, con su hora real.
+  // (MyGeotab no permite pedir el último registro en orden inverso.)
+  async lastKnown(devId,id){
+    const now=Date.now(),LIM=2000;
+    const r=await Geo.call('Get',{typeName:'StatusData',resultsLimit:LIM,
+      search:{deviceSearch:{id:devId},diagnosticSearch:{id},fromDate:new Date(now-86400000).toISOString(),toDate:new Date(now).toISOString()}});
+    if(r.length&&r.length<LIM){const x=r.reduce((a,b)=>a.dateTime>b.dateTime?a:b);return {v:x.data,t:new Date(x.dateTime).getTime()};}
+    const iso=new Date(now).toISOString();
+    const q=await Geo.call('Get',{typeName:'StatusData',resultsLimit:1,search:{deviceSearch:{id:devId},diagnosticSearch:{id},fromDate:iso,toDate:iso}});
+    return q.length?{v:q[0].data,t:null}:null;
+  }
+};
+
+/* =====================================================
+   2. MODO DEMO
+   ===================================================== */
+function DemoSource(){
+  const cat=[
+    {id:'DiagnosticEngineSpeedId',uom:'UnitOfMeasureRevolutionsPerMinuteId',n:'Velocidad del motor'},
+    {id:'DiagnosticEngineRoadSpeedId',uom:'UnitOfMeasureKilometersPerHourId',n:'Velocidad en carretera'},
+    {id:'DiagnosticEngineCoolantTemperatureId',uom:'UnitOfMeasureDegreesCelsiusId',n:'Temperatura del refrigerante'},
+    {id:'DiagnosticFuelLevelId',uom:'UnitOfMeasurePercentageId',n:'Nivel de combustible'},
+    {id:'DiagnosticGoDeviceVoltageId',uom:'UnitOfMeasureVoltsId',n:'Voltaje del dispositivo'},
+    {id:'DiagnosticEngineOilPressureId',uom:'UnitOfMeasureKiloPascalsId',n:'Presión de aceite del motor'},
+    {id:'DiagnosticIgnitionId',uom:'UnitOfMeasureNoneId',n:'Encendido'},
+    {id:'DiagnosticOdometerId',uom:'UnitOfMeasureMetersId',n:'Odómetro'},
+    {id:'DiagnosticEngineHoursId',uom:'UnitOfMeasureSecondsId',n:'Horas de motor'},
+    {id:'DiagnosticOutsideTemperatureId',uom:'UnitOfMeasureDegreesCelsiusId',n:'Temperatura exterior'}
+  ];
+  const st={cool:62,fuel:58,odo:184532000,hours:9123*3600};
+  return {
+    demo:true,interval:5,
+    async devices(){return [{id:'demo1',name:'Camión demo 101',plate:'TKQ-482'}];},
+    async discover(){return cat.map(c=>describe({id:c.id,name:c.n,unitOfMeasure:c.uom}));},
+    async searchDiag(){return [];},
+    async poll(devId,ids){
+      const now=Date.now(),lag=3000+Math.random()*4000,spd=sim?sim.speed:0;
+      st.cool=Math.min(96,st.cool+.4+(Math.random()-.5)*.6);st.fuel=Math.max(5,st.fuel-.01);st.odo+=spd/3.6*5;st.hours+=5;
+      const val={
+        DiagnosticEngineSpeedId:spd<2?650+Math.random()*30:900+spd*24+(Math.random()-.5)*80,
+        DiagnosticEngineRoadSpeedId:Math.max(0,spd+(Math.random()-.5)*2),
+        DiagnosticEngineCoolantTemperatureId:st.cool,
+        DiagnosticFuelLevelId:st.fuel,
+        DiagnosticGoDeviceVoltageId:27.6+(Math.random()-.5)*.4,
+        DiagnosticEngineOilPressureId:260+spd*2+(Math.random()-.5)*20,
+        DiagnosticIgnitionId:1,DiagnosticOdometerId:st.odo,DiagnosticEngineHoursId:st.hours,
+        DiagnosticOutsideTemperatureId:18+(Math.random()-.5)};
+      const out={};ids.forEach(id=>{out[id]=val[id]!=null?[{v:val[id],t:now-lag}]:[];});
+      return out;
+    },
+    async lastKnown(){return null;}
+  };
+}
+
+/* =====================================================
+   3. ESTADO
+   ===================================================== */
+const S={src:null,db:'',dev:null,devices:[],catalog:new Map(),cfg:{metrics:[],interval:10},values:new Map(),since:{},
+  timer:null,busy:false,lastOk:0,ok:true,pos:null,trail:[],follow:true,sat:false,watchId:null,simTimer:null,lastFix:0,wake:null,badState:{}};
+const cfgKey=()=>'nv2_cfg_'+S.db;
+function loadCfg(){
+  try{const c=JSON.parse(store.get(cfgKey())||'null');if(c&&Array.isArray(c.metrics)){S.cfg=c;return true;}}catch(e){}
+  return false;
+}
+function saveCfg(){store.set(cfgKey(),JSON.stringify(S.cfg));}
+const STATE_IDS=new Set(['DiagnosticIgnitionId','DiagnosticParkingBrakeId','DiagnosticDriverSeatbeltId']);
+const VIEW_LBL={valor:'Valor',grafico:'Gráfico',barra:'Barra',tablero:'Tablero'};
+// Qué formas de ver tiene sentido para cada dato
+function viewsFor(m){
+  if(!m||STATE_IDS.has(m.id)||m.u==='')return ['valor'];
+  if(/Odometer|EngineHours|TotalFuel|TotalIdleFuel|TotalTrip/.test(m.id)||m.u==='km'||m.u==='h')return ['valor','grafico'];
+  return ['valor','grafico','barra','tablero'];
+}
+function defaultView(m){
+  const v=viewsFor(m);
+  if(/EngineSpeed|aW3Nmy|EngineRoadSpeed/.test(m.id)&&v.includes('tablero'))return 'tablero';
+  if(m.id==='DiagnosticFuelLevelId')return 'barra';
+  if(/Coolant|OilTemperature/.test(m.id)&&v.includes('grafico'))return 'grafico';
+  return 'valor';
+}
+// Escala del reloj o de la barra (se puede cambiar en Personalizar)
+function scaleFor(c,m,v){
+  if(c.scale)return +c.scale;
+  const x=v==null?null:(m.f?m.f(v):v);
+  if(/EngineSpeed|aW3Nmy/.test(m.id)||m.u==='rpm')return 8000;
+  if(m.u==='km/h')return 140;if(m.u==='°C')return 130;if(m.u==='%')return 100;
+  if(m.u==='V')return x!=null&&x>18?32:16;if(m.u==='kPa')return 700;
+  if(x!=null&&x>0){const p=Math.pow(10,Math.ceil(Math.log10(x*1.25)));return p/2>=x*1.25?p/2:p;}
+  return 100;
+}
+function niceStep(range,target){const raw=range/target,p=Math.pow(10,Math.floor(Math.log10(raw)));for(const k of [1,2,5,10])if(k*p>=raw-1e-9)return k*p;return 10*p;}
+const hasLim=x=>x!=null&&x!==''&&!isNaN(+x);
+
+function defaultMetrics(){
+  const order=KNOWN.map(k=>k.id);
+  const avail=[...S.catalog.values()].sort((a,b)=>{const ia=order.indexOf(a.id),ib=order.indexOf(b.id);return (ia<0?99:ia)-(ib<0?99:ib);});
+  const out=[];let hasRpm=false;
+  for(const m of avail){
+    if(m.id==='DiagnosticEngineSpeedId'&&hasRpm)continue;
+    if(/OdometerAdjustment|EngineHoursAdjustment/.test(m.id)&&out.some(x=>/Odometer|EngineHours/.test(x.id)&&m.id.replace('Adjustment','')===x.id))continue;
+    if(m.id==='aW3Nmy-ktfEuvrdkya4z0yg')hasRpm=true;
+    out.push({id:m.id,view:defaultView(m),min:m.defMin??null,max:m.defMax??null});
+    if(out.length>=DEFAULT_COUNT)break;
+  }
+  return out;
+}
+
+/* =====================================================
+   4. MAPA Y GPS DEL CELULAR
+   ===================================================== */
+let map,tiles={},meMarker=null,accCircle=null,trailLine=null,trailCasing=null;
+const dark=matchMedia('(prefers-color-scheme: dark)').matches;
+function initMap(){
+  if(map)return;
+  map=L.map('map',{zoomControl:false,maxZoom:19}).setView([4.65,-74.1],12);
+  map.attributionControl.setPrefix(false);map.attributionControl.setPosition('topleft');
+  const osm=()=>L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'});
+  if(dark){
+    const E='https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/';
+    const base=L.tileLayer(E+'World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,maxNativeZoom:16,attribution:'© Esri · © OpenStreetMap'});
+    const labels=L.tileLayer(E+'World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,maxNativeZoom:16});
+    const grp=L.layerGroup([base,labels]);let fails=0;
+    base.on('tileerror',()=>{if(++fails===6&&tiles.street===grp){const on=map.hasLayer(grp);if(on)map.removeLayer(grp);tiles.street=osm();if(on)tiles.street.addTo(map);}});
+    tiles.street=grp;
+  }else tiles.street=osm();
+  tiles.sat=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,maxNativeZoom:18,attribution:'Imágenes © Esri'});
+  tiles.street.addTo(map);
+  map.createPane('trail').style.zIndex=420;
+  map.on('dragstart',()=>{if(S.follow){S.follow=false;$('#btnCenter').setAttribute('aria-pressed','false');}});
+}
+function animateTo(m,to){
+  const from=m.getLatLng();cancelAnimationFrame(m._raf);const t0=performance.now(),d=950;
+  const f=now=>{const k=Math.min(1,(now-t0)/d);m.setLatLng([from.lat+(to[0]-from.lat)*k,from.lng+(to[1]-from.lng)*k]);if(k<1)m._raf=requestAnimationFrame(f);};
+  m._raf=requestAnimationFrame(f);
+}
+function renderMe(){
+  const p=S.pos;if(!p)return;const ll=[p.lat,p.lng];
+  if(!meMarker){
+    meMarker=L.marker(ll,{zIndexOffset:1000,interactive:false,icon:L.divIcon({className:'',iconSize:[52,52],iconAnchor:[26,26],
+      html:'<div class="me"><i class="pulse"></i><span class="icon arrow">navigation</span></div>'})}).addTo(map);
+    accCircle=L.circle(ll,{radius:p.acc,weight:1,color:'#26B5E6',fillColor:'#26B5E6',fillOpacity:.08,interactive:false}).addTo(map);
+    map.setView(ll,16);
+  }else{animateTo(meMarker,ll);accCircle.setLatLng(ll).setRadius(p.acc);}
+  const el=meMarker.getElement();if(el)el.querySelector('.arrow').style.transform='rotate('+(p.bearing||0)+'deg)';
+  if(S.follow)map.panTo(ll,{animate:true,duration:.95,easeLinearity:1});
+  const pts=S.trail.map(q=>[q.lat,q.lng]);
+  if(!trailLine){
+    trailCasing=L.polyline(pts,{pane:'trail',color:'#0F447E',weight:8,opacity:.45,lineJoin:'round',lineCap:'round',interactive:false}).addTo(map);
+    trailLine=L.polyline(pts,{pane:'trail',color:'#26B5E6',weight:4,lineJoin:'round',lineCap:'round',interactive:false}).addTo(map);
+  }else{trailCasing.setLatLngs(pts);trailLine.setLatLngs(pts);}
+}
+function onFix(f){
+  const prev=S.pos,now=Date.now(),cur={lat:f.lat,lng:f.lng},moved=prev?hav(prev,cur):0;
+  let hd=(f.heading!=null&&!isNaN(f.heading))?f.heading:null;
+  if(hd==null)hd=prev?(moved>4?bearingTo(prev,cur):prev.bearing):0;
+  let spd=(f.speed!=null&&f.speed>=0)?f.speed*3.6:(prev&&moved>0?moved/Math.max(.5,(now-prev.t)/1000)*3.6:0);
+  if(spd<2)spd=0;
+  S.pos={lat:cur.lat,lng:cur.lng,speed:spd,bearing:hd,acc:f.acc,t:now};S.lastFix=now;
+  if(!S.trip)S.trip={start:now,dist:0,max:0};
+  if(prev&&moved>3&&f.acc<=40&&moved<500)S.trip.dist+=moved;
+  if(spd>S.trip.max)S.trip.max=spd;
+  renderTrip();
+  if(!prev||moved>3){S.trail.push({lat:cur.lat,lng:cur.lng,t:now});const cut=now-30*60000;while(S.trail.length&&S.trail[0].t<cut)S.trail.shift();}
+  renderMe();renderGpsCard();
+}
+function startGps(){
+  if(S.src&&S.src.demo){startSim();return;}
+  if(!('geolocation' in navigator)){toast('Este equipo no permite usar el GPS desde el navegador.');return;}
+  if(S.watchId!=null)return;
+  S.watchId=navigator.geolocation.watchPosition(p=>{const c=p.coords;if(c.accuracy>80)return;onFix({lat:c.latitude,lng:c.longitude,acc:c.accuracy,speed:c.speed,heading:c.heading});},
+    err=>toast(err.code===1?'Permite el acceso a la ubicación en Chrome para ver tu posición.':'No se pudo leer el GPS. Revisa que la ubicación esté encendida.'),
+    {enableHighAccuracy:true,maximumAge:0,timeout:20000});
+}
+function stopGps(){if(S.watchId!=null){navigator.geolocation.clearWatch(S.watchId);S.watchId=null;}clearInterval(S.simTimer);S.simTimer=null;}
+async function keepAwake(){try{if('wakeLock' in navigator&&!document.hidden&&(S.watchId!=null||S.simTimer))S.wake=await navigator.wakeLock.request('screen');}catch(e){}}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){keepAwake();if(S.src)loop();}});
+
+// Recorrido simulado para el modo demo
+let sim=null;
+function startSim(){
+  const B=[4.645,-74.105],loop=[[0,0],[0,.010],[.006,.010],[.006,.016],[.012,.016],[.012,0]].map(d=>({lat:B[0]+d[0],lng:B[1]+d[1]}));
+  sim={loop,i:1,lat:loop[0].lat,lng:loop[0].lng,speed:0};
+  clearInterval(S.simTimer);
+  S.simTimer=setInterval(()=>{
+    const tg=sim.loop[sim.i],cur={lat:sim.lat,lng:sim.lng},dist=hav(cur,tg);
+    sim.speed+=((dist<140?22:52)-sim.speed)*.2+(Math.random()-.5)*3;sim.speed=Math.max(0,sim.speed);
+    const step=sim.speed/3.6;
+    if(step>=dist){sim.lat=tg.lat;sim.lng=tg.lng;sim.i=(sim.i+1)%sim.loop.length;}
+    else{const k=step/dist;sim.lat+=(tg.lat-sim.lat)*k;sim.lng+=(tg.lng-sim.lng)*k;}
+    onFix({lat:sim.lat,lng:sim.lng,acc:5+Math.random()*4,speed:sim.speed/3.6,heading:bearingTo(cur,tg)});
+  },1000);
+}
+
+/* =====================================================
+   5. TELEMETRÍA EN TIEMPO REAL
+   ===================================================== */
+async function loop(){
+  clearTimeout(S.timer);
+  const src=S.src;if(!src||!S.dev)return;
+  if(!document.hidden&&!S.busy&&S.cfg.metrics.length){
+    S.busy=true;
+    const ids=S.cfg.metrics.map(m=>m.id);
+    try{
+      const res=await src.poll(S.dev.id,ids,S.since);
+      if(S.src!==src)return;
+      for(const id of ids){
+        const rows=res[id]||[];
+        let rec=S.values.get(id);if(!rec){rec={v:null,t:null,hist:[],known:false};S.values.set(id,rec);}
+        for(const r of rows){if(rec.t&&r.t<=rec.t)continue;rec.v=r.v;rec.t=r.t;rec.hist.push(r);}
+        const cutH=Date.now()-30*60000;while(rec.hist.length&&rec.hist[0].t<cutH)rec.hist.shift();
+        if(rec.hist.length>4000)rec.hist.splice(0,rec.hist.length-4000);
+        if(rows.length)S.since[id]=rows[rows.length-1].t+1;
+        else if(!S.since[id]){ // sin registros recientes: muestra el último valor conocido
+          S.since[id]=Date.now()-60000;
+          if(rec.v==null)src.lastKnown(S.dev.id,id).then(x=>{if(x&&rec.v==null){rec.v=x.v;rec.t=x.t;rec.known=true;if(x.t)rec.hist.push(x);renderCards();}}).catch(()=>{});
+        }
+      }
+      S.lastOk=Date.now();S.ok=true;
+    }catch(e){S.ok=false;if(e.code!=='Network')toast(friendly(e));}
+    finally{S.busy=false;}
+    renderCards();
+  }
+  if(S.src===src)S.timer=setTimeout(loop,S.cfg.interval*1000);
+}
+function isBad(cfg,meta,v){
+  if(v==null)return false;const x=meta.f?meta.f(v):v;
+  return (hasLim(cfg.min)&&x<+cfg.min)||(hasLim(cfg.max)&&x>+cfg.max);
+}
+function renderGpsCard(){
+  const el=$('#gpsChip');if(el)el.textContent=S.pos?'GPS '+Math.round(S.pos.speed)+' km/h':'GPS —';
+  const cg=$('#carGpsSpeed');if(cg)cg.textContent=S.pos?Math.round(S.pos.speed):'—';
+}
+// Reloj de aguja tipo tablero de vehículo
+function gaugeSVG(c,m,v,bad){
+  const vmax=scaleFor(c,m,v),x=v==null?null:(m.f?m.f(v):v),cx=100,cy=100,r=88,A0=150,SW=240;
+  const ang=q=>A0+SW*Math.max(0,Math.min(1,q/vmax));
+  const P=(rr,a)=>{const t=a*Math.PI/180;return [cx+rr*Math.cos(t),cy+rr*Math.sin(t)];};
+  const f1=n=>n.toFixed(1);
+  const arc=(a0,a1)=>{const p0=P(r,a0),p1=P(r,a1);return 'M'+f1(p0[0])+' '+f1(p0[1])+' A'+r+' '+r+' 0 '+(a1-a0>180?1:0)+' 1 '+f1(p1[0])+' '+f1(p1[1]);};
+  const hiRed=hasLim(c.max)&&+c.max<vmax,loRed=hasLim(c.min)&&+c.min>0;
+  let s='<svg viewBox="0 0 200 178" role="img" aria-label="'+esc(m.name+' '+fmtVal(m,v)+' '+m.u)+'">';
+  s+='<path d="'+arc(A0,A0+SW)+'" fill="none" stroke="#1C3D66" stroke-width="10" stroke-linecap="round"/>';
+  if(hiRed)s+='<path d="'+arc(ang(+c.max),A0+SW)+'" fill="none" stroke="#E5574F" stroke-width="10"/>';
+  if(loRed)s+='<path d="'+arc(A0,ang(+c.min))+'" fill="none" stroke="#E5574F" stroke-width="10"/>';
+  if(x!=null&&ang(x)-A0>.5)s+='<path d="'+arc(A0,ang(x))+'" fill="none" stroke="'+(bad?'#E5574F':'#26B5E6')+'" stroke-width="10" stroke-linecap="round"/>';
+  const major=niceStep(vmax,7),div=(m.u==='rpm'&&vmax>=2000)?1000:1;
+  for(let i=0;i*major/2<=vmax+1e-9;i++){
+    const q=i*major/2,isMaj=i%2===0,inRed=(hiRed&&q>=+c.max)||(loRed&&q<=+c.min);
+    const a=P(r-9,ang(q)),b=P(r-(isMaj?19:14),ang(q));
+    s+='<path d="M'+f1(a[0])+' '+f1(a[1])+' L'+f1(b[0])+' '+f1(b[1])+'" stroke="'+(inRed?'#E5574F':'#9DB8D6')+'" stroke-width="'+(isMaj?2:1)+'"/>';
+    if(isMaj){const l=P(r-31,ang(q));s+='<text x="'+f1(l[0])+'" y="'+f1(l[1]+4)+'" text-anchor="middle" font-size="11" fill="'+(inRed?'#F28A83':'#C9DDF0')+'">'+(+(q/div).toFixed(1)).toLocaleString('es-CO')+'</text>';}
+  }
+  if(x!=null){const n=P(r-14,ang(x)),b1=P(5,ang(x)+90),b2=P(5,ang(x)-90);
+    s+='<path d="M'+f1(b1[0])+' '+f1(b1[1])+' L'+f1(n[0])+' '+f1(n[1])+' L'+f1(b2[0])+' '+f1(b2[1])+' Z" fill="#FFFFFF" style="transition:all .8s"/>';}
+  s+='<circle cx="100" cy="100" r="7" fill="#0B2747" stroke="#FFFFFF" stroke-width="2.5"/>';
+  s+='<text x="100" y="146" text-anchor="middle" font-size="26" font-weight="800" fill="'+(bad?'#F28A83':'#FFFFFF')+'" style="font-family:var(--title)">'+fmtVal(m,v)+'</text>';
+  s+='<text x="100" y="164" text-anchor="middle" font-size="11" fill="#9DB8D6">'+esc(m.u)+(div>1?' · x1000':'')+'</text></svg>';
+  return s;
+}
+// Gráfico de los últimos minutos con la línea del límite
+function chartHTML(c,m,hist){
+  const win=(S.cfg.chartMin||10)*60000,now=Date.now(),t0=now-win;
+  const pts=hist.filter(p=>p.t>=t0).map(p=>({t:p.t,v:m.f?m.f(p.v):p.v}));
+  if(pts.length<2)return '<div class="nochart">Reuniendo datos para el gráfico…</div>';
+  let lo=Math.min(...pts.map(p=>p.v)),hi=Math.max(...pts.map(p=>p.v));
+  const span=(hi-lo)||Math.abs(hi)||1,lims=[c.min,c.max].filter(hasLim).map(Number);
+  lims.forEach(l=>{if(l<lo&&lo-l<span*.8)lo=l;if(l>hi&&l-hi<span*.8)hi=l;});
+  if(hi===lo){hi+=1;lo-=1;}const pad=(hi-lo)*.1;hi+=pad;lo-=pad;
+  const W=300,H=64,X=t=>((t-t0)/win*W).toFixed(1),Y=v=>(H-(v-lo)/(hi-lo)*H).toFixed(1);
+  const d=pts.map((p,i)=>(i?'L':'M')+X(p.t)+' '+Y(p.v)).join(' ');
+  const area=d+' L'+X(pts[pts.length-1].t)+' '+H+' L'+X(pts[0].t)+' '+H+' Z';
+  let lines='';lims.forEach(l=>{if(l>=lo&&l<=hi)lines+='<path class="lim" d="M0 '+Y(l)+' H'+W+'"/>';});
+  return '<svg class="chart" viewBox="0 0 300 64" preserveAspectRatio="none" role="img" aria-label="Tendencia de '+esc(m.name)+'"><path class="area" d="'+area+'"/>'+lines+'<path class="ln" d="'+d+'"/></svg>';
+}
+// Barra de nivel con marcas de límite
+function barHTML(c,m,v){
+  const sc=scaleFor(c,m,v),x=v==null?0:(m.f?m.f(v):v),pct=Math.max(0,Math.min(100,x/sc*100));
+  let marks='';[c.min,c.max].forEach(l=>{if(hasLim(l))marks+='<b style="left:'+Math.max(0,Math.min(100,+l/sc*100))+'%"></b>';});
+  const lim=(hasLim(c.min)?' · mín. '+c.min:'')+(hasLim(c.max)?' · máx. '+c.max:'');
+  return '<div class="bar"><i style="width:'+pct+'%"></i>'+marks+'</div><div class="bar-ax">0 – '+sc.toLocaleString('es-CO')+' '+esc(m.u)+lim+'</div>';
+}
+function renderCards(){
+  const g=$('#grid');let dash='',cards='';
+  const gaugeIds=S.cfg.metrics.filter(c=>c.view==='tablero'&&viewsFor(S.catalog.get(c.id)).includes('tablero')).map(c=>c.id);
+  for(const c of S.cfg.metrics){
+    const m=S.catalog.get(c.id)||{id:c.id,name:c.id,u:'',d:2};
+    const r=S.values.get(c.id)||{v:null,t:null,hist:[]};
+    const bad=isBad(c,m,r.v),stale=!r.t||Date.now()-r.t>STALE_MS;
+    if(bad&&!S.badState[c.id]){try{navigator.vibrate&&navigator.vibrate([300,120,300]);}catch(e){}toast(m.name+' fuera de rango: '+fmtVal(m,r.v)+' '+m.u);}
+    S.badState[c.id]=bad;
+    const age=r.t?'hace '+ago(r.t):(r.known?'últ. conocido':'sin datos');
+    const ageSpan='<span class="tc-age" data-t="'+(r.t||'')+'">'+age+'</span>';
+    const view=viewsFor(m).includes(c.view)?c.view:'valor';
+    const dim=(stale&&r.v!=null)?' stale':'';
+    if(view==='tablero'){
+      const idx=gaugeIds.indexOf(c.id),w=gaugeIds.length===1?'70%':(idx===0?'54%':'42%');
+      dash+='<div class="gauge'+(bad?' bad':'')+'" style="width:'+w+(dim?';opacity:.6':'')+'">'+gaugeSVG(c,m,r.v,bad)+'<div class="gl">'+esc(m.name)+' · '+ageSpan+'</div></div>';
+      continue;
+    }
+    const head='<div class="tc-top"><span class="tc-name">'+esc(m.name)+'</span>'+ageSpan+'</div>';
+    const val='<div class="tc-val"><b>'+fmtVal(m,r.v)+'</b><small>'+esc(m.u)+'</small></div>';
+    if(view==='grafico'){
+      const lim=(hasLim(c.min)?'mín. '+c.min+' ':'')+(hasLim(c.max)?'máx. '+c.max+' ':'')+(hasLim(c.min)||hasLim(c.max)?esc(m.u):'');
+      cards+='<div class="tcard wide'+(bad?' bad':'')+dim+'">'+head+'<div style="display:flex;gap:10px;align-items:center">'+
+        '<div style="flex:none;min-width:72px">'+val+'</div>'+chartHTML(c,m,r.hist)+'</div>'+
+        '<div class="chart-ax" style="padding-left:82px"><span>-'+(S.cfg.chartMin||10)+' min</span><span>'+lim+'</span><span>ahora</span></div></div>';
+    }else if(view==='barra'){
+      cards+='<div class="tcard'+(bad?' bad':'')+dim+'">'+head+val+barHTML(c,m,r.v)+'</div>';
+    }else{
+      cards+='<div class="tcard'+(bad?' bad':'')+dim+'">'+head+val+'</div>';
+    }
+  }
+  if(S.car){
+    // en el modo vehículo los relojes van al tablero central con la velocidad GPS en medio
+    const parts=dash.split('<div class="gauge').filter(Boolean).map(x=>'<div class="gauge'+x);
+    const gps='<div class="c-gps"><span>Velocidad GPS</span><b id="carGpsSpeed">'+(S.pos?Math.round(S.pos.speed):'—')+'</b><span>km/h</span><span class="pill off" id="carEng">Motor —</span></div>';
+    $('#carGauges').innerHTML=parts.length?(parts[0]+gps+parts.slice(1).join('')):gps;
+    $('#carCards').innerHTML=cards||'<div class="empty">Agrega datos desde Personalizar.</div>';
+    const nBad=Object.values(S.badState).filter(Boolean).length;$('#alertBadge').hidden=!nBad;$('#alertBadge').textContent=nBad;
+    $('#carEvery').textContent='cada '+S.cfg.interval+' s';
+  }else{
+    g.innerHTML=(dash?'<div class="dash">'+dash+'</div>':'')+cards+
+      '<button class="addcard" id="addCard"><span class="icon">tune</span>Personalizar</button>';
+  }
+  renderGpsCard();
+  const ign=S.values.get('DiagnosticIgnitionId'),rpmR=S.values.get('aW3Nmy-ktfEuvrdkya4z0yg')||S.values.get('DiagnosticEngineSpeedId');
+  let on=null;
+  if(ign&&ign.t&&Date.now()-ign.t<STALE_MS)on=ign.v>=1;
+  else if(rpmR&&rpmR.t)on=Date.now()-rpmR.t<120000&&rpmR.v>200;
+  ['#engPill','#carEng'].forEach(s=>{const p=$(s);if(p){p.className='pill '+(on?'on':'off');p.textContent=on==null?'Motor —':(on?'Motor encendido':'Motor apagado');}});
+  $('#carSub').textContent=on==null?'Esperando datos del vehículo':(on?'Motor encendido · buen viaje':'Motor apagado');
+}
+function tick(){
+  if($('#app').hidden)return;
+  const fresh=S.ok&&S.lastOk&&Date.now()-S.lastOk<S.cfg.interval*1000*3;
+  $('#meta').classList.toggle('ok',!!fresh);
+  const gpsOk=S.lastFix&&Date.now()-S.lastFix<10000;
+  $('#metaTxt').textContent=(fresh?'Telemetría al día':'Reconectando…')+' · '+(gpsOk?'GPS ok':'sin GPS');
+  if(meMarker){const el=meMarker.getElement();if(el)el.querySelector('.me').classList.toggle('stale',!gpsOk);}
+  document.querySelectorAll('.tc-age[data-t]').forEach(e=>{const t=+e.dataset.t;if(t)e.textContent='hace '+ago(t);});
+  if(S.car){
+    const d=new Date(),hh=d.getHours(),t=d.toLocaleTimeString('es-CO',{hour:'numeric',minute:'2-digit'});
+    $('#carClock').textContent=t;
+    const parts=t.split(/\s/);$('#carTime').innerHTML=esc(parts[0])+'<small>'+esc(parts.slice(1).join(' '))+'</small>';
+    const wd=d.toLocaleDateString('es-CO',{weekday:'long'}),dm=d.toLocaleDateString('es-CO',{day:'numeric',month:'long'});
+    $('#carDate').innerHTML=esc(wd.charAt(0).toUpperCase()+wd.slice(1))+'<br>'+esc(dm);
+    $('#carHello').textContent=(hh<12?'Buenos días,':hh<19?'Buenas tardes,':'Buenas noches,');
+    $('#carDot').className=gpsOk?'ok':'';
+    $('#carGps').textContent=S.pos?'GPS ±'+Math.round(S.pos.acc)+' m':'GPS —';
+    $('#carStatus').textContent=fresh?'Telemetría al día':'Reconectando…';
+    renderTrip();
+  }
+}
+setInterval(tick,1000);
+
+/* =====================================================
+   5b. MODO PANTALLA DEL VEHÍCULO (horizontal)
+   ===================================================== */
+const carMQ=matchMedia('(orientation: landscape) and (min-width: 900px)');
+const DIRS=['Norte','Noreste','Este','Sureste','Sur','Suroeste','Oeste','Noroeste'];
+function renderTrip(){
+  if(!S.car)return;
+  const tr=S.trip;
+  const km=tr?tr.dist/1000:0,min=tr?(Date.now()-tr.start)/60000:0;
+  $('#tripKm').textContent=km.toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1});
+  $('#tripTime').textContent=min<60?Math.round(min)+' min':Math.floor(min/60)+' h '+Math.round(min%60)+' min';
+  $('#tripAvg').textContent=min>=1?Math.round(km/(min/60))+' km/h':'— km/h';
+  $('#tripMax').textContent=Math.round(tr?tr.max:0)+' km/h';
+  const b=S.pos?S.pos.bearing||0:0;
+  $('#carNeedle').style.transform='rotate('+b+'deg)';
+  $('#carDir').textContent=S.pos&&S.pos.speed>3?DIRS[Math.round(b/45)%8]:'—';
+}
+function applyMode(){
+  const want=!$('#app').hidden&&(URLP.get('modo')==='vehiculo'||carMQ.matches);
+  if(want===!!S.car)return;
+  S.car=want;document.body.classList.toggle('car',want);$('#carView').hidden=!want;
+  const mapEl=$('#map');
+  if(want){$('#miniMap').prepend(mapEl);}
+  else{$('#carView').classList.remove('mapbig');$('#app').insertBefore(mapEl,$('#app').querySelector('.fabs'));}
+  setTimeout(()=>{measure();if(map){map.invalidateSize();if(S.pos)map.setView([S.pos.lat,S.pos.lng],want?15:16);}},60);
+  renderCards();tick();
+}
+carMQ.addEventListener?carMQ.addEventListener('change',applyMode):carMQ.addListener(applyMode);
+// Foto del vehículo: 1) la que puso el conductor en este equipo, 2) vehiculos/<NOMBRE>.webp del repositorio, 3) silueta
+const photoKey=()=>'nv2_photo_'+S.db+'_'+(S.dev?S.dev.id:'');
+function showPhoto(src){
+  const img=$('#carImg');
+  if(!src){img.hidden=true;$('#carSil').style.display='';$('#photoTxt').textContent='Poner foto del vehículo';return;}
+  img.onload=()=>{img.hidden=false;$('#carSil').style.display='none';$('#photoTxt').textContent='Cambiar foto';};
+  img.onerror=()=>showPhoto(null);
+  img.src=src;
+}
+function loadPhoto(){
+  if(!S.dev)return;
+  $('#carName').textContent=S.dev.name+(S.dev.plate&&S.dev.plate!==S.dev.name?' · '+S.dev.plate:'');
+  $('#carImg').alt='Foto del vehículo '+S.dev.name;
+  const saved=store.get(photoKey());
+  showPhoto(saved||('vehiculos/'+encodeURIComponent(S.src&&S.src.demo?'demo':S.dev.name.trim().toUpperCase())+'.webp'));
+}
+// Quita el fondo blanco de fotos tipo catálogo (solo si los bordes de la foto son blancos)
+function removeWhiteBg(cv){
+  const ctx=cv.getContext('2d'),W=cv.width,H=cv.height,img=ctx.getImageData(0,0,W,H),d=img.data;
+  const isBg=i=>{const r=d[i],g=d[i+1],b=d[i+2],mn=Math.min(r,g,b),mx=Math.max(r,g,b);return mn>=228&&mx-mn<16;};
+  let white=0,total=0;
+  for(let x=0;x<W;x+=4){total+=2;if(isBg(x*4))white++;if(isBg(((H-1)*W+x)*4))white++;}
+  for(let y=0;y<H;y+=4){total+=2;if(isBg(y*W*4))white++;if(isBg((y*W+W-1)*4))white++;}
+  if(white/total<.6)return false;
+  const seen=new Uint8Array(W*H),st=[];
+  const push=(x,y)=>{const p=y*W+x;if(!seen[p]&&isBg(p*4)){seen[p]=1;st.push(p);}};
+  for(let x=0;x<W;x++){push(x,0);push(x,H-1);}for(let y=0;y<H;y++){push(0,y);push(W-1,y);}
+  while(st.length){const p=st.pop(),x=p%W,y=(p-x)/W;d[p*4+3]=0;if(x>0)push(x-1,y);if(x<W-1)push(x+1,y);if(y>0)push(x,y-1);if(y<H-1)push(x,y+1);}
+  // la sombra del estudio (degradado gris suave bajo el vehículo) se vuelve sombra oscura
+  const y0=Math.floor(H*.55),lum=p=>(d[p*4]+d[p*4+1]+d[p*4+2])/3;
+  const okSh=(p,from)=>{const i=p*4,r=d[i],g=d[i+1],b=d[i+2],mn=Math.min(r,g,b),mx=Math.max(r,g,b);return mn>=40&&mx-mn<18&&Math.abs(lum(p)-from)<=5;};
+  const L=new Float32Array(W*H);for(let p=0;p<W*H;p++)L[p]=lum(p);
+  for(let y=y0;y<H;y++)for(let x=0;x<W;x++){const p=y*W+x;if(seen[p]===1)st.push(p);}
+  while(st.length){const p=st.pop(),x=p%W,y=(p-x)/W;
+    [[1,0],[-1,0],[0,1],[0,-1]].forEach(([dx,dy])=>{const nx=x+dx,ny=y+dy;if(nx<0||nx>=W||ny<y0||ny>=H)return;const q=ny*W+nx;
+      if(!seen[q]&&okSh(q,L[p])){seen[q]=2;st.push(q);}});}
+  for(let p=0;p<W*H;p++)if(seen[p]===2){const i=p*4;d[i]=d[i+1]=d[i+2]=0;d[i+3]=Math.max(0,Math.min(1,(245-L[p])/120))*200;}
+  ctx.putImageData(img,0,0);return true;
+}
+async function onPhoto(file){
+  if(!file)return;
+  try{
+    const url=URL.createObjectURL(file),im=new Image();
+    await new Promise((ok,ko)=>{im.onload=ok;im.onerror=ko;im.src=url;});
+    const sc=Math.min(1,1000/Math.max(im.width,im.height)),cv=document.createElement('canvas');
+    cv.width=Math.round(im.width*sc);cv.height=Math.round(im.height*sc);
+    cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);URL.revokeObjectURL(url);
+    const cut=removeWhiteBg(cv);
+    let data=cv.toDataURL('image/webp',.85);if(!data.startsWith('data:image/webp'))data=cv.toDataURL('image/png');
+    try{localStorage.setItem(photoKey(),data);}catch(e){toast('La foto es muy pesada para guardarla; se verá solo en esta sesión.');}
+    showPhoto(data);toast(cut?'Foto guardada, se quitó el fondo blanco.':'Foto guardada en este equipo.');
+  }catch(e){toast('No se pudo leer la foto.');}
+}
+
+/* =====================================================
+   6. PERSONALIZACIÓN
+   ===================================================== */
+function renderCfg(){
+  document.querySelectorAll('#ivSeg button').forEach(b=>b.classList.toggle('on',+b.dataset.s===S.cfg.interval));
+  document.querySelectorAll('#chSeg button').forEach(b=>b.classList.toggle('on',+b.dataset.m===(S.cfg.chartMin||10)));
+  $('#dataTitle').textContent='Datos de '+(S.dev?S.dev.name:'este vehículo');
+  const q=$('#avQ').value.trim().toLowerCase(),sel=S.cfg.metrics,inSel=new Set(sel.map(c=>c.id));
+  const rows=sel.map((c,i)=>({c,i,m:S.catalog.get(c.id)||{id:c.id,name:c.id,full:'',u:''}}))
+    .concat([...S.catalog.values()].filter(m=>!inSel.has(m.id)).sort((a,b)=>(b.known-a.known)||a.name.localeCompare(b.name,'es')).map(m=>({c:null,m})))
+    .filter(x=>!q||(x.m.name+' '+(x.m.full||'')).toLowerCase().includes(q));
+  $('#selList').innerHTML=rows.length?rows.map(({c,i,m})=>{
+    const id=esc(m.id);
+    if(!c)return '<div class="drow off" data-id="'+id+'"><div class="dtop"><div class="nm"><b>'+esc(m.name)+'</b><small>Oculto · '+esc(m.u||'sin unidad')+'</small></div>'+
+      '<button class="sw" aria-pressed="false" data-a="tog" aria-label="Mostrar '+esc(m.name)+'"><span></span></button></div></div>';
+    const vs=viewsFor(m),view=vs.includes(c.view)?c.view:'valor';
+    let h='<div class="drow" data-id="'+id+'"><div class="dtop"><div class="nm"><b>'+esc(m.name)+'</b><small>Se ve como '+VIEW_LBL[view].toLowerCase()+(m.u?' · '+esc(m.u):'')+'</small></div>'+
+      '<button class="ibtn sm" data-a="up" aria-label="Subir"'+(i?'':' disabled')+'><span class="icon">arrow_upward</span></button>'+
+      '<button class="ibtn sm" data-a="down" aria-label="Bajar"'+(i<sel.length-1?'':' disabled')+'><span class="icon">arrow_downward</span></button>'+
+      '<button class="sw" aria-pressed="true" data-a="tog" aria-label="Ocultar '+esc(m.name)+'"><span></span></button></div>';
+    if(vs.length>1)h+='<div class="views">'+vs.map(v=>'<button data-v="'+v+'" class="'+(v===view?'on':'')+'" aria-pressed="'+(v===view)+'">'+VIEW_LBL[v]+'</button>').join('')+'</div>';
+    if(vs.length>1){
+      h+='<div class="lims2">rojo si menor que <input class="input sm" inputmode="decimal" data-k="min" value="'+(c.min??'')+'"> o mayor que <input class="input sm" inputmode="decimal" data-k="max" value="'+(c.max??'')+'"> '+esc(m.u);
+      if(view==='tablero'||view==='barra'){const r=S.values.get(c.id);h+=' · escala hasta <input class="input sm" inputmode="decimal" data-k="scale" value="'+(c.scale??'')+'" placeholder="'+scaleFor({},m,r&&r.v)+'">';}
+      h+='</div>';
+    }
+    return h+'</div>';
+  }).join(''):'<div class="empty">'+(S.catalog.size?'Ningún dato coincide con el filtro.':'No se detectaron datos recientes. Enciende el vehículo o usa "Buscar otro dato".')+'</div>';
+}
+function addMetric(id){
+  if(S.cfg.metrics.some(m=>m.id===id))return;
+  const m=S.catalog.get(id);
+  S.cfg.metrics.push({id,view:m?defaultView(m):'valor',min:m&&m.defMin!=null?m.defMin:null,max:m&&m.defMax!=null?m.defMax:null});
+  saveCfg();renderCfg();renderCards();loop();
+}
+function openCfg(){$('#cfg').hidden=false;renderCfg();}
+
+/* =====================================================
+   7. FLUJO: SESIÓN → VEHÍCULO → TELEMETRÍA
+   ===================================================== */
+function loading(on,t){$('#loading').hidden=!on;if(t)$('#loadingTxt').textContent=t;}
+let toastT;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),3800);}
+function measure(){
+  document.documentElement.style.setProperty('--bar-h',$('#appbar').offsetHeight+'px');
+  document.documentElement.style.setProperty('--sheet-h',(innerWidth>=760?0:$('#sheet').offsetHeight)+'px');
+  if(map)map.invalidateSize();
+}
+new ResizeObserver(measure).observe($('#sheet'));addEventListener('resize',measure);
+
+function show(id){['login','picker','app'].forEach(s=>$('#'+s).hidden=s!==id);}
+function renderPicker(){
+  const q=$('#vq').value.trim().toLowerCase();
+  const list=S.devices.filter(d=>!q||(d.name+' '+d.plate).toLowerCase().includes(q));
+  const shown=list.slice(0,200);
+  $('#vlist').innerHTML=shown.length?shown.map(d=>'<button class="vitem" data-id="'+esc(d.id)+'"><span class="icon">local_shipping</span><span><b>'+esc(d.name)+'</b><small>'+esc(d.plate||'Sin placa')+'</small></span></button>').join('')+
+    (list.length>200?'<div class="empty">Mostrando 200 de '+list.length+'. Usa el buscador.</div>':'')
+    :'<div class="empty">'+(S.devices.length?'Ningún vehículo coincide.':'Tu usuario no tiene vehículos asignados en MyGeotab.')+'</div>';
+}
+async function afterLogin(src,db){
+  S.src=src;S.db=db;S.trip=null;
+  S.userName='Conductor';
+  if(!src.demo&&Geo.login){
+    const un=Geo.login.userName;S.userName=un.split('@')[0].split(/[._-]/)[0].replace(/^./,c=>c.toUpperCase());
+    Geo.call('Get',{typeName:'User',search:{name:un},resultsLimit:1}).then(r=>{if(r[0]&&r[0].firstName){S.userName=r[0].firstName.split(' ')[0];$('#carUser').textContent=S.userName;}}).catch(()=>{});
+  }
+  $('#carUser').textContent=S.userName;
+  loading(true,'Cargando vehículos…');
+  try{S.devices=await src.devices();}catch(e){loading(false);toast(friendly(e));return;}
+  loading(false);
+  const last=store.get('nv2_dev_'+db);
+  if(S.devices.length===1)return openVehicle(S.devices[0]);
+  const want=(URLP.get('veh')||'').trim().toLowerCase();
+  const byUrl=want&&S.devices.find(d=>d.name.toLowerCase()===want||d.plate.toLowerCase()===want);
+  if(byUrl&&!src.demo)return openVehicle(byUrl);
+  const prev=last&&S.devices.find(d=>d.id===last);
+  if(prev&&!src.demo)return openVehicle(prev);
+  show('picker');$('#vq').value='';renderPicker();
+}
+async function openVehicle(dev){
+  S.dev=dev;store.set('nv2_dev_'+S.db,dev.id);
+  Object.assign(S,{values:new Map(),since:{},badState:{}});
+  show('app');initMap();measure();
+  $('#metaVeh').textContent=dev.name+(dev.plate&&dev.plate!==dev.name?' · '+dev.plate:'');
+  $('#shTitle').textContent='Telemetría';
+  loading(true,'Detectando datos de motor de '+dev.name+'…');
+  try{S.catalog=new Map((await S.src.discover(dev.id)).map(m=>[m.id,m]));}catch(e){S.catalog=new Map();toast(friendly(e));}
+  loading(false);
+  if(!loadCfg()){S.cfg={metrics:defaultMetrics(),interval:S.src.demo?5:10,chartMin:10};saveCfg();}
+  S.cfg.chartMin=S.cfg.chartMin||10;
+  S.cfg.metrics.forEach(c=>{if(!c.view){const m=S.catalog.get(c.id);c.view=m?defaultView(m):'valor';}});
+  // los datos guardados que no están en el catálogo se describen para mostrar su nombre
+  const missing=S.cfg.metrics.filter(m=>!S.catalog.has(m.id)).map(m=>m.id);
+  if(missing.length&&!S.src.demo){
+    const r=await Promise.allSettled(missing.map(id=>Geo.call('Get',{typeName:'Diagnostic',search:{id},resultsLimit:1})));
+    r.forEach(x=>{if(x.status==='fulfilled'&&x.value[0]){const m=describe(x.value[0]);S.catalog.set(m.id,m);}});
+  }
+  loadPhoto();applyMode();renderCards();
+  if(!S.watchId&&!S.simTimer){$('#start').hidden=false;}
+  loop();
+}
+function exitAll(){
+  clearTimeout(S.timer);stopGps();try{S.wake&&S.wake.release();}catch(e){}
+  if(map){[meMarker,accCircle,trailLine,trailCasing].forEach(l=>l&&map.removeLayer(l));}
+  meMarker=accCircle=trailLine=trailCasing=null;
+  Object.assign(S,{src:null,dev:null,devices:[],catalog:new Map(),values:new Map(),since:{},pos:null,trail:[],lastFix:0,lastOk:0});
+  Geo.creds=null;Geo.login=null;$('#fPwd').value='';$('#cfg').hidden=true;$('#start').hidden=true;show('login');
+  S.trip=null;applyMode();
+}
+
+/* =====================================================
+   8. EVENTOS
+   ===================================================== */
+const URLP=new URLSearchParams(location.search);
+$('#fDb').value=URLP.get('db')||store.get('nv_db')||'';$('#fUser').value=store.get('nv_user')||'';$('#fServer').value=store.get('nv_server')||'my.geotab.com';
+$('#eyeBtn').addEventListener('click',()=>{const i=$('#fPwd'),sh=i.type==='password';i.type=sh?'text':'password';$('#eyeBtn .icon').textContent=sh?'visibility_off':'visibility';});
+$('#loginForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const server=$('#fServer').value.trim().replace(/^https?:\/\//,'').replace(/\/.*$/,'')||'my.geotab.com';
+  const db=$('#fDb').value.trim(),user=$('#fUser').value.trim(),pwd=$('#fPwd').value;
+  const btn=$('#loginBtn'),err=$('#loginErr');btn.disabled=true;$('#loginTxt').textContent='Conectando…';err.hidden=true;
+  try{
+    await Geo.authenticate(server,db,user,pwd);
+    store.set('nv_db',db);store.set('nv_user',user);store.set('nv_server',server);
+    afterLogin(Real,db);
+  }catch(ex){err.textContent=friendly(ex);err.hidden=false;}
+  finally{btn.disabled=false;$('#loginTxt').textContent='Conectar';}
+});
+$('#demoBtn').addEventListener('click',()=>afterLogin(DemoSource(),'demo'));
+$('#vq').addEventListener('input',renderPicker);
+$('#vlist').addEventListener('click',e=>{const b=e.target.closest('.vitem');if(!b)return;const d=S.devices.find(x=>x.id===b.dataset.id);if(d)openVehicle(d);});
+$('#pickerBack').addEventListener('click',exitAll);
+$('#startBtn').addEventListener('click',()=>{$('#start').hidden=true;startGps();keepAwake();});
+$('#exitBtn').addEventListener('click',()=>{
+  if(S.devices.length>1){clearTimeout(S.timer);S.dev=null;show('picker');$('#vq').value='';renderPicker();}
+  else exitAll();
+});
+$('#photoBtn').addEventListener('click',()=>$('#photoIn').click());
+$('#photoIn').addEventListener('change',e=>{onPhoto(e.target.files[0]);e.target.value='';});
+$('#dockCfg').addEventListener('click',openCfg);
+$('#dockExit').addEventListener('click',()=>$('#exitBtn').click());
+$('#dockAlert').addEventListener('click',()=>{
+  const bad=S.cfg.metrics.filter(c=>S.badState[c.id]).map(c=>{const m=S.catalog.get(c.id)||{name:c.id,u:''},r=S.values.get(c.id);return m.name+': '+fmtVal(m,r&&r.v)+' '+m.u;});
+  toast(bad.length?bad.join(' · '):'Sin alertas: todos los datos están dentro de sus límites.');
+});
+function setMapBig(on){
+  $('#carView').classList.toggle('mapbig',on);$('#dockMap').classList.toggle('on',on);$('#dockDash').classList.toggle('on',!on);
+  $('#miniBtn').textContent=on?'Cerrar mapa':'Ampliar mapa';setTimeout(()=>map&&map.invalidateSize(),80);
+}
+$('#dockMap').addEventListener('click',()=>setMapBig(!$('#carView').classList.contains('mapbig')));
+$('#dockDash').addEventListener('click',()=>setMapBig(false));
+$('#miniBtn').addEventListener('click',()=>setMapBig(!$('#carView').classList.contains('mapbig')));
+$('#handle').addEventListener('click',()=>$('#sheet').classList.toggle('collapsed'));
+$('#cfgBtn').addEventListener('click',openCfg);
+$('#grid').addEventListener('click',e=>{if(e.target.closest('#addCard'))openCfg();});
+$('#cfgClose').addEventListener('click',()=>{$('#cfg').hidden=true;renderCards();});
+$('#cfg').addEventListener('click',e=>{if(e.target.id==='cfg'){$('#cfg').hidden=true;renderCards();}});
+$('#ivSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;S.cfg.interval=+b.dataset.s;saveCfg();renderCfg();loop();});
+$('#chSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;S.cfg.chartMin=+b.dataset.m;saveCfg();renderCfg();renderCards();});
+$('#selList').addEventListener('click',e=>{
+  const row=e.target.closest('.drow');if(!row)return;const id=row.dataset.id,a=S.cfg.metrics,i=a.findIndex(c=>c.id===id);
+  const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.v&&i>=0)a[i].view=b.dataset.v;
+  else if(b.dataset.a==='tog'){if(i>=0)a.splice(i,1);else{addMetric(id);return;}}
+  else if(b.dataset.a==='up'&&i>0)[a[i-1],a[i]]=[a[i],a[i-1]];
+  else if(b.dataset.a==='down'&&i>=0&&i<a.length-1)[a[i+1],a[i]]=[a[i],a[i+1]];
+  else return;
+  saveCfg();renderCfg();renderCards();
+});
+$('#selList').addEventListener('change',e=>{
+  const inp=e.target.closest('input[data-k]');if(!inp)return;const id=inp.closest('.drow').dataset.id,c=S.cfg.metrics.find(x=>x.id===id);if(!c)return;
+  const v=inp.value.trim().replace(',','.');c[inp.dataset.k]=v===''||isNaN(+v)?null:+v;saveCfg();renderCards();
+});
+$('#avQ').addEventListener('input',renderCfg);
+async function searchDiag(){
+  const q=$('#dgQ').value.trim();if(q.length<3){toast('Escribe al menos 3 letras.');return;}
+  $('#dgList').innerHTML='<div class="empty">Buscando…</div>';
+  try{
+    const list=await S.src.searchDiag(q);
+    $('#dgList').innerHTML=list.length?list.map(m=>'<div class="mrow"><div class="nm"><b>'+esc(m.full||m.name)+'</b><small>'+esc(m.u||'sin unidad')+'</small></div>'+
+      '<button class="ibtn sm add" data-dg="'+esc(m.id)+'" aria-label="Agregar"><span class="icon">add_circle</span></button></div>').join('')
+      :'<div class="empty">'+(S.src.demo?'La búsqueda funciona con una base real.':'Sin resultados.')+'</div>';
+    $('#dgList')._list=list;
+  }catch(ex){$('#dgList').innerHTML='<div class="empty">'+esc(friendly(ex))+'</div>';}
+}
+$('#dgBtn').addEventListener('click',searchDiag);
+$('#dgQ').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();searchDiag();}});
+$('#dgList').addEventListener('click',e=>{
+  const b=e.target.closest('[data-dg]');if(!b)return;const m=($('#dgList')._list||[]).find(x=>x.id===b.dataset.dg);
+  if(m){S.catalog.set(m.id,m);addMetric(m.id);toast('Agregado: '+(m.full||m.name));}
+});
+$('#btnLayer').addEventListener('click',()=>{S.sat=!S.sat;$('#btnLayer').setAttribute('aria-pressed',S.sat);map.removeLayer(S.sat?tiles.street:tiles.sat);(S.sat?tiles.sat:tiles.street).addTo(map);$('#btnLayer .icon').textContent=S.sat?'map':'satellite_alt';});
+$('#btnCenter').addEventListener('click',()=>{S.follow=true;$('#btnCenter').setAttribute('aria-pressed','true');if(S.pos)map.setView([S.pos.lat,S.pos.lng],Math.max(map.getZoom(),16));});
+})();
+</script>
+<script>
+if('serviceWorker' in navigator&&location.protocol==='https:'){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
+</script>
+</body>
+</html>
